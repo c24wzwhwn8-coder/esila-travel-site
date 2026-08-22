@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esila Travel Dubai — Dubai'yi Keşfet</title>
+<meta name="description" content="Dubai ve Abu Dhabi'nin en popüler tur ve biletleri. Türkçe/İngilizce, AED/USD/TRY. Kolay rezervasyon.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#F0631C;--orange2:#FF7E33;--orange-dark:#D2540C;--ink:#1C232E;--muted:#69747F;--soft:#9AA4AF;--line:#ECEEF1;--bg:#fff;--bg2:#F8FAFB;--blue:#2F6FE0;--red:#E23744;--green:#25D366}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Poppins',sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit;cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.topbar{border-bottom:1px solid var(--line)}.topbar-in{display:flex;align-items:center;justify-content:space-between;height:84px}
+.brand{display:flex;align-items:center;cursor:pointer}.brand img{height:52px;width:auto}
+.brand .bt{font-weight:800;font-size:20px;line-height:1.05;color:var(--orange);letter-spacing:.3px}
+.brand .bt small{display:block;font-size:12px;letter-spacing:3px;color:var(--orange);font-weight:700}
+.top-right{display:flex;align-items:center;gap:12px}
+.sel{border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:var(--ink);background:#fff;cursor:pointer;outline:none}
+.mainnav{border-bottom:1px solid var(--line);position:relative}.mainnav-in{display:flex;align-items:center;gap:32px;height:54px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.mainnav a{font-size:14.5px;font-weight:600;color:var(--ink);white-space:nowrap}.mainnav a:hover,.mainnav a.active{color:var(--orange)}
+.cart-btn{position:relative;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;color:var(--ink)}
+.cart-btn svg{width:22px;height:22px;pointer-events:none}
+.cart-count{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 4px;background:var(--orange);color:#fff;border-radius:9px;font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center}
+.menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;margin-left:auto}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--ink);margin:0 auto;border-radius:2px}
+.cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;display:none;align-items:flex-end;justify-content:center}
+.cart-ov.open{display:flex}
+.cart-modal{background:#fff;width:100%;max-width:480px;max-height:88vh;border-radius:20px 20px 0 0;display:flex;flex-direction:column;overflow:hidden}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+.cart-head h3{font-size:18px;font-weight:800}
+.cart-x{border:none;background:#F1F5F9;width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer;color:var(--muted)}
+.cart-body{padding:14px 20px;overflow-y:auto;flex:1}
+.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cart-nm{font-weight:700;font-size:14.5px;color:var(--ink)}
+.cart-sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+.cart-amt{font-weight:800;color:var(--ink);font-size:14.5px;white-space:nowrap}
+.cart-rm{border:none;background:none;color:var(--red);font-size:12px;font-weight:700;cursor:pointer;margin-top:6px;padding:0}
+.cart-foot{padding:16px 20px;border-top:1px solid var(--line);background:var(--bg2)}
+.cart-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.cart-row b{font-weight:800}
+.cart-co{width:100%;background:var(--orange);color:#fff;border:none;border-radius:12px;padding:15px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px}
+.cart-co:hover{background:var(--orange-dark)}
+.cart-keep{width:100%;background:none;border:none;color:var(--muted);font-weight:600;font-size:13.5px;cursor:pointer;margin-top:8px;font-family:'Poppins',sans-serif}
+.bb-add{width:100%;background:#fff;color:var(--orange);border:1.5px solid var(--orange);border-radius:12px;padding:14px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:10px}
+.bb-add:hover{background:#FFF3EC}
+@media(min-width:560px){.cart-ov{align-items:center}.cart-modal{border-radius:20px}}
+.hero{position:relative;height:510px;overflow:hidden;background:linear-gradient(180deg,#F3AE68 0%,#E98F50 34%,#D96E3D 60%,#B8501F 100%)}
+.hero svg.sky{position:absolute;inset:0;width:100%;height:100%}
+.hero-content{position:relative;z-index:3;max-width:1200px;margin:0 auto;padding:100px 24px 0}
+.hero h1{color:#fff;font-size:clamp(38px,6vw,64px);font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.22);line-height:1.05}
+.hero .sub{color:#fff;font-size:clamp(15px,2.2vw,21px);margin-top:14px;font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,.28);opacity:.95}
+.searchbar{position:absolute;left:50%;transform:translateX(-50%);bottom:-32px;z-index:5;width:calc(100% - 48px);max-width:1150px;background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(20,30,45,.18);display:flex;align-items:center;padding:10px 10px 10px 24px;gap:8px}
+.sb-field{flex:1;display:flex;align-items:center;gap:10px;min-width:0}.sb-field .lbl{font-size:15px;color:var(--muted);font-weight:600}
+.sb-div{width:1px;height:34px;background:var(--line);flex-shrink:0}
+.sb-date{flex:1.4;font-size:15px;color:var(--ink);font-weight:600;padding-left:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-btn{background:var(--orange);color:#fff;border:none;border-radius:12px;padding:14px 34px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;white-space:nowrap}.sb-btn:hover{background:var(--orange-dark)}
+.hero2{background:linear-gradient(135deg,#0D1B2A 0%,#1A3355 100%)}.hero2 .wrap{padding-top:60px;padding-bottom:52px}
+.hero2 .kick{color:var(--orange);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.hero2 h1{color:#fff;font-size:clamp(30px,5vw,52px);font-weight:800;line-height:1.06}
+.hero2 p{color:rgba(255,255,255,.6);font-size:16px;margin-top:12px;margin-bottom:24px;max-width:560px}
+.hsearch{display:flex;gap:10px;background:#fff;border-radius:14px;padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.28);flex-wrap:wrap;max-width:900px}
+.hsearch input{flex:1;min-width:180px;border:none;outline:none;padding:13px 14px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;color:var(--ink);border-radius:10px}
+.hsearch select{border:none;background:var(--bg2);border-radius:10px;padding:0 16px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;outline:none}
+.hsearch button{background:var(--orange);color:#fff;border:none;border-radius:10px;padding:14px 30px;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;cursor:pointer}.hsearch button:hover{background:var(--orange-dark)}
+@media(max-width:640px){.hero2 .wrap{padding-top:40px;padding-bottom:36px}.hsearch input,.hsearch select,.hsearch button{flex:1 1 100%}}
+.sec{padding:66px 0 6px}.sec-h{font-size:clamp(23px,3.2vw,32px);font-weight:800;margin-bottom:5px}
+.sec-sub{color:var(--muted);font-size:14.5px;margin-bottom:30px}
+.grpttl{font-size:20px;font-weight:800;margin:38px 0 20px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:all .22s;display:flex;flex-direction:column;height:100%}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(20,30,45,.11)}
+.ph{height:170px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.phwm{font-size:14px;font-weight:800;letter-spacing:4px;color:rgba(255,255,255,.7);text-transform:uppercase}
+.phtag{position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,.85);color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.8px;padding:4px 9px;border-radius:6px;text-transform:uppercase}
+.t-city{position:absolute;top:12px;right:12px;background:rgba(20,28,40,.6);color:#fff;font-size:10px;font-weight:700;letter-spacing:.5px;padding:3px 9px;border-radius:6px;text-transform:uppercase}
+.badge{position:absolute;top:12px;left:12px;color:#fff;font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:7px}
+.badge.pop{background:var(--blue)}.badge.best{background:var(--red)}
+.cb{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+.ct{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.3;min-height:41px}
+.dur{font-size:13px;color:var(--muted);margin:8px 0 14px}
+.sp{font-size:12px;color:var(--soft);font-weight:600;margin-bottom:3px}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
+.pcol{display:flex;flex-direction:column}.orig{font-size:12px;color:var(--soft);text-decoration:line-through}
+.now{font-size:20px;font-weight:800;color:var(--ink)}.frm{font-size:11px;color:var(--soft);font-weight:600}
+.cta{font-size:12.5px;font-weight:700;color:var(--orange);white-space:nowrap}
+.disc{background:#FFE8D6;color:var(--orange-dark);font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:8px;white-space:nowrap}
+.all-tours{display:flex;justify-content:center;margin:42px 0 8px}
+.all-tours a{border:1.5px solid var(--line);border-radius:999px;padding:14px 42px;font-size:15px;font-weight:700;color:var(--ink)}
+.all-tours a:hover{border-color:var(--orange);color:var(--orange)}
+.pagehead{padding:38px 0 4px}.pagehead h1{font-size:clamp(27px,4vw,38px);font-weight:800}.pagehead p{color:var(--muted);margin-top:8px;font-size:15px;max-width:640px}
+.searchbox{margin:18px 0 6px;max-width:420px}
+.searchbox input{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-family:'Poppins',sans-serif;font-size:14.5px;outline:none}
+.searchbox input:focus{border-color:var(--orange)}
+.crumb{padding:24px 0 4px;font-size:14px;color:var(--muted)}.crumb a:hover{color:var(--orange)}.crumb .sep{margin:0 8px;color:var(--soft)}
+.p-title{font-size:clamp(26px,4vw,40px);font-weight:800;margin:6px 0 14px}
+.p-tags{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.p-tag{font-size:13px;font-weight:700;padding:7px 14px;border-radius:8px}
+.p-tag.pop{background:var(--blue);color:#fff}.p-tag.best{background:var(--red);color:#fff}
+.p-tag.grey{background:var(--bg2);color:var(--muted);border:1px solid var(--line)}
+.p-layout{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:start}
+.gallery{border-radius:18px;overflow:hidden;position:relative;height:420px;display:flex;align-items:center;justify-content:center}
+.gallery .phwm{font-size:22px;letter-spacing:6px}
+.gallery .hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(20,28,40,.5);color:#fff;font-size:12px;padding:6px 16px;border-radius:20px;white-space:nowrap}
+.book-box{border:1px solid var(--line);border-radius:18px;padding:24px;position:sticky;top:20px;box-shadow:0 12px 30px rgba(20,30,45,.06)}
+.bb-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--soft);margin-bottom:8px}
+.bb-select{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:14px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--ink);outline:none;margin-bottom:18px;background:#fff;cursor:pointer}.bb-select:focus{border-color:var(--orange)}
+.bb-prow{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+.bb-per{font-size:16px;font-weight:700}.bb-price{display:flex;align-items:baseline;gap:8px}
+.bb-orig{font-size:15px;color:var(--soft);text-decoration:line-through}.bb-now{font-size:26px;font-weight:800}
+.bb-disc{display:inline-block;background:#FFE8D6;color:var(--orange-dark);font-size:13px;font-weight:700;padding:7px 13px;border-radius:9px;margin:8px 0 18px}
+.bb-note{font-size:12px;color:var(--muted);margin-bottom:16px}
+.bb-field{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;color:var(--muted);font-size:14px;font-weight:600}
+.bb-input{width:100%;border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:12px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--ink);background:#fff;outline:none;cursor:pointer}.bb-input:focus{border-color:var(--orange)}
+.pax-row{display:flex;align-items:center;justify-content:space-between;padding:12px 2px;border-bottom:1px solid var(--line)}.pax-t{font-size:14px;font-weight:700}.pax-s{font-size:11.5px;color:var(--soft)}
+.pax-ctrl{display:flex;align-items:center;gap:14px}.pax-b{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-size:20px;font-weight:700;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif}.pax-b.plus{background:var(--orange);color:#fff;border-color:var(--orange)}.pax-n{font-size:18px;font-weight:800;min-width:26px;text-align:center}
+.bb-total{display:flex;justify-content:space-between;align-items:center;background:var(--bg2);border-radius:12px;padding:14px 16px;margin:16px 0 6px}.bb-total span:first-child{font-size:13px;font-weight:600;color:var(--muted)}.bb-total span:last-child{font-size:19px;font-weight:800;color:var(--orange-dark)}
+.vupload{display:block;border:1.5px dashed var(--line);border-radius:14px;padding:18px;cursor:pointer;margin-bottom:6px}.vupload:hover{border-color:var(--orange)}
+.vupload-in{display:flex;align-items:center;gap:14px}.vu-ic{width:44px;height:44px;border-radius:12px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--orange);font-weight:800}.vu-t{font-size:14px;font-weight:700}.vu-s{font-size:12px;color:var(--soft);word-break:break-all}
+.vagree{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--muted);margin:14px 0;cursor:pointer}.vagree input{margin-top:2px;flex-shrink:0}
+.visa-rules{background:#F0F6FF;border:1px solid #C7DCF7;border-radius:12px;padding:12px 14px;margin-top:14px;font-size:11.5px;color:#33506B;line-height:1.7}
+.hs-sel,.hs-date{border:none;background:none;font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;color:var(--ink);outline:none;cursor:pointer}.hs-date{flex:1.2;padding-left:2px;color:var(--ink)}
+.hs-input{flex:1;border:none;outline:none;font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;color:var(--ink);background:none;min-width:0}
+.searchrow{display:flex;gap:12px;margin:18px 0 6px;flex-wrap:wrap}.searchrow input{flex:1;min-width:220px;border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-family:'Poppins',sans-serif;font-size:14.5px;outline:none}.searchrow input:focus{border-color:var(--orange)}.searchrow select{border:1.5px solid var(--line);border-radius:12px;padding:0 14px;font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:600;background:#fff;cursor:pointer;outline:none}
+.bb-btn{width:100%;background:var(--orange);color:#fff;border:none;border-radius:12px;padding:15px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:6px}.bb-btn:hover{background:var(--orange-dark)}
+.bb-social{display:flex;gap:12px;justify-content:center;margin-top:22px}
+.bb-social a{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.bb-social a.wa{background:var(--green)}.bb-social a.wa svg{width:22px;height:22px}
+.detail{max-width:820px;margin-top:52px}
+.d-row{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:28px 0;border-top:1px solid var(--line)}.d-row:first-child{border-top:none}
+.d-label{font-size:17px;font-weight:800}.d-body{font-size:15px;color:#39424E;line-height:1.75}.d-body p{margin-bottom:10px}
+.ptable{width:100%;border-collapse:collapse;font-size:14px}.ptable td{padding:11px 0;border-bottom:1px solid var(--line)}.ptable td.pr{text-align:right;font-weight:800;white-space:nowrap}
+footer{border-top:1px solid var(--line);margin-top:68px;padding:54px 0 30px;background:var(--bg2)}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:40px}
+.foot-h{font-size:18px;font-weight:800;margin-bottom:18px}
+.foot-info p{font-size:14px;color:var(--muted);margin-bottom:10px;line-height:1.6}.foot-info b{color:var(--ink)}.foot-info a:hover{color:var(--orange)}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:12px}.foot-links a{font-size:14px;color:var(--muted)}.foot-links a:hover{color:var(--orange)}
+.newsletter{display:flex;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;max-width:400px;margin-bottom:24px}
+.newsletter input{flex:1;border:none;outline:none;padding:12px 14px;font-family:'Poppins',sans-serif;font-size:14px;background:none}
+.newsletter button{background:var(--orange);color:#fff;border:none;border-radius:9px;padding:11px 22px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
+.foot-social a{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--ink)}.foot-social a:hover{border-color:var(--orange);color:var(--orange)}
+.foot-bottom{max-width:1200px;margin:42px auto 0;padding:22px 24px 0;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--soft)}
+.wa{position:fixed;left:22px;bottom:22px;z-index:80;width:58px;height:58px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.4)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.p-layout{grid-template-columns:1fr}.book-box{position:static;order:-1}.gallery{height:280px}.d-row{grid-template-columns:1fr;gap:8px}.foot-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:760px){.menu-btn{display:flex}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;align-items:stretch;padding:6px 0;box-shadow:0 14px 28px rgba(20,30,45,.1);border-bottom:1px solid var(--line);z-index:120}.nav-links.open{display:flex}.nav-links a{padding:13px 24px}.nav-links a:not(:last-child){border-bottom:1px solid var(--line)}}
+@media(max-width:640px){.topbar-in{height:64px}.brand img{width:42px;height:42px}.brand .bt{font-size:16px}.hero{height:430px}.hero-content{padding-top:64px}.searchbar{flex-wrap:wrap;bottom:-72px}.sb-field,.sb-date{flex:1 1 100%}.sb-div{display:none}.sb-btn{flex:1 1 100%}.sec{padding-top:100px}.cards{grid-template-columns:1fr 1fr;gap:14px}.foot-grid{grid-template-columns:1fr}.ct{font-size:14px}.now{font-size:18px}.top-right{gap:8px}.sel{padding:8px 9px;font-size:12.5px}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap topbar-in">
+  <a class="brand" onclick="go('')" title="Anasayfa" style="cursor:pointer"><img src="data:image/png;base64,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" alt="Esila Travel Dubai"></a>
+  <div class="top-right">
+    <div class="cart-btn" onclick="openCart()" title="Sepet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg><span class="cart-count" id="cartCount">0</span></div>
+    <select class="sel" id="curSel" onchange="setCur(this.value)"><option value="AED">AED</option><option value="USD">USD ($)</option><option value="TRY">TRY (₺)</option></select>
+    <select class="sel" id="langSel" onchange="setLang(this.value)"><option value="tr">Türkçe</option><option value="en">English</option></select>
+  </div>
+</div></div>
+<div class="mainnav"><div class="wrap mainnav-in">
+  <div class="nav-links" id="navLinks">
+    <a onclick="go('')" id="nv_home">Anasayfa</a>
+    <a onclick="go('vize')" id="nv_visa">30 Günlük Dubai Vizesi</a>
+    <a onclick="go('turlar')" id="nv_tours">Turlar</a>
+    <a onclick="go('hakkimizda')" id="nv_about">Hakkımızda</a>
+    <a onclick="go('','ftr')" id="nv_contact">İletişim</a>
+  </div>
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></div>
+
+<main id="app"></main>
+
+<footer id="ftr"></footer>
+<div class="cart-ov" id="cartOv" onclick="if(event.target===this)closeCart()"><div class="cart-modal">
+  <div class="cart-head"><h3 id="cartTitle">Sepet</h3><button class="cart-x" onclick="closeCart()">&times;</button></div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot"></div>
+</div></div>
+<a href="https://wa.me/971559097043" class="wa" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18 5 16.5 5 15 5 9 10 4.9 16 4.9S27 9 27 15 22 24.8 16 24.8zm5.5-7.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.2-.7.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2.9 1.2 2.9.8 3.5.8.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg></a>
+
+<script>
+var DATA = [{"slug": "dubai-sehir-turu", "type": "tour", "city": "Dubai", "grad": "linear-gradient(135deg,#F4B073,#E08A44)", "badge": ["pop", "Popüler", "Popular"], "name": {"tr": "1 Günlük Dubai Şehir Turu", "en": "1 Day Dubai City Tour"}, "dur": {"tr": "9 Saat", "en": "9 Hours"}, "orig": 1099, "now": 650, "disc": 39, "blurb": {"tr": ["Dubai'nin ikonik noktalarını tek günde keşfet.", "Türkçe rehber eşliğinde konforlu bir şehir turu."], "en": ["Discover Dubai's iconic sights in a single day.", "A comfortable city tour with a guide."]}, "inc": {"tr": ["Otelden alış & bırakış", "Türkçe profesyonel rehber", "Klimalı araçla şehir turu", "Fotoğraf molaları"], "en": ["Hotel pick-up & drop-off", "Professional guide", "City tour by A/C vehicle", "Photo stops"]}, "pkgs": [{"tr": "4 Kişilik Araç", "en": "4-Person Vehicle", "p": 650}, {"tr": "6 Kişilik Araç", "en": "6-Person Vehicle", "p": 850}]}, {"slug": "abu-dhabi-sehir-turu", "type": "tour", "city": "Abu Dhabi", "grad": "linear-gradient(135deg,#7FB4DD,#4E86B8)", "badge": null, "name": {"tr": "1 Günlük Abu Dhabi Şehir Turu", "en": "1 Day Abu Dhabi City Tour"}, "dur": {"tr": "10 Saat", "en": "10 Hours"}, "orig": 1199, "now": 750, "disc": 36, "blurb": {"tr": ["Başkent Abu Dhabi'nin görkemli yapıları ve sahilleri.", "Türkçe rehberle dolu dolu bir gün."], "en": ["The grand landmarks and coasts of Abu Dhabi.", "A full day with a guide."]}, "inc": {"tr": ["Otelden alış & bırakış", "Türkçe rehber", "Sheikh Zayed Camii ziyareti", "Klimalı ulaşım"], "en": ["Hotel pick-up & drop-off", "Guide", "Sheikh Zayed Mosque visit", "A/C transport"]}, "pkgs": [{"tr": "4 Kişilik Araç", "en": "4-Person Vehicle", "p": 750}, {"tr": "6 Kişilik Araç", "en": "6-Person Vehicle", "p": 1000}]}, {"slug": "col-safari-vip", "type": "tour", "city": "Dubai", "grad": "linear-gradient(135deg,#E9A25C,#C9762F)", "badge": ["best", "Çok Satan", "Best Seller"], "name": {"tr": "Dubai Çöl Safarisi - VİP Paket", "en": "Dubai Desert Safari - VIP Package"}, "dur": {"tr": "6 - 7 saat", "en": "6 - 7 hours"}, "orig": 400, "now": 260, "disc": 35, "blurb": {"tr": ["Dubai'nin en popüler deneyimi: Çöl Safarisi!", "4x4 çöl sürüşü, sandboarding, canlı gösteriler ve açık büfe akşam yemeği."], "en": ["Dubai's most popular experience: Desert Safari!", "4x4 dune drive, sandboarding, live shows and buffet dinner."]}, "inc": {"tr": ["Otelden 4x4 ile alış & bırakış", "Çölde sürüş + sandboarding", "Gün batımı fotoğraf molası", "Deve turu, kına, sınırsız meşrubat", "Canlı gösteriler", "Açık büfe + barbekü akşam yemeği"], "en": ["4x4 hotel pick-up & drop-off", "Dune drive + sandboarding", "Sunset photo stop", "Camel ride, henna, soft drinks", "Live shows", "Buffet + BBQ dinner"]}, "pkgs": []}, {"slug": "helikopter-turu", "type": "tour", "city": "Dubai", "grad": "linear-gradient(135deg,#7FB4DD,#4E86B8)", "badge": ["best", "Çok Satan", "Best Seller"], "name": {"tr": "12 Dakikalık Helikopter Turu", "en": "12-Minute Helicopter Tour"}, "dur": {"tr": "12 Dakika", "en": "12 Minutes"}, "orig": 890, "now": 670, "disc": 25, "blurb": {"tr": ["Dubai'yi kuşbakışı izle: 12 dakikalık helikopter turu.", "Burj Khalifa, Palm ve sahil ayaklarının altında."], "en": ["See Dubai from above: a 12-minute helicopter tour.", "Burj Khalifa, Palm and coastline below you."]}, "inc": {"tr": ["12 dakikalık uçuş", "Palm & Burj Al Arab manzarası", "Profesyonel pilot", "Güvenlik brifingi"], "en": ["12-minute flight", "Palm & Burj Al Arab views", "Professional pilot", "Safety briefing"]}, "pkgs": []}, {"slug": "burj-khalifa", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#F4B073,#E08A44)", "badge": ["pop", "Popüler", "Popular"], "name": {"tr": "Burj Khalifa – At the Top", "en": "Burj Khalifa – At the Top"}, "dur": null, "blurb": {"tr": ["Dünyanın en yüksek binasında panoramik Dubai manzarası."], "en": ["Panoramic Dubai views from the world's tallest building."]}, "inc": {"tr": ["Gözlem terası girişi", "Yüksek hızlı asansör", "Panoramik manzara"], "en": ["Observation deck entry", "High-speed lift", "Panoramic views"]}, "pkgs": [{"tr": "Silver – Gün Doğumu (124-125. Kat)", "en": "Silver – Sunrise (124-125. Floor)", "p": 159}, {"tr": "Silver – Genel Giriş (Non-Prime)", "en": "Silver – General Admission (Non-Prime)", "p": 189}, {"tr": "Silver – Prime Saatler", "en": "Silver – Prime Hours", "p": 259}, {"tr": "Silver + Hızlı Geçiş", "en": "Silver + Fast Track", "p": 314}, {"tr": "Gold – Genel Giriş", "en": "Gold – General Admission", "p": 399}, {"tr": "Gold – Prime Saatler", "en": "Gold – Prime Hours", "p": 553}, {"tr": "Platinum – 148. Kat", "en": "Platinum – 148. Floor", "p": 769}]}, {"slug": "view-at-the-palm", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#7FC9AE,#3E9D82)", "badge": null, "name": {"tr": "The View at The Palm", "en": "The View at The Palm"}, "dur": null, "blurb": {"tr": ["Palm Jumeirah'ın 52. katından 360° manzara."], "en": ["360° views from the 52nd floor of Palm Jumeirah."]}, "inc": {"tr": ["Gözlem katı girişi", "Palm & Dubai manzarası"], "en": ["Observation floor entry", "Palm & Dubai views"]}, "pkgs": [{"tr": "Genel Giriş – Non-Prime", "en": "General Admission – Non-Prime", "p": 110}, {"tr": "Genel Giriş – Prime Saatler", "en": "General Admission – Prime Hours", "p": 165}, {"tr": "Hızlı Geçiş – Non-Prime", "en": "Fast Track – Non-Prime", "p": 185}, {"tr": "Hızlı Geçiş – Prime", "en": "Fast Track – Prime", "p": 240}]}, {"slug": "ain-dubai", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#7FB4DD,#4E86B8)", "badge": null, "name": {"tr": "Ain Dubai", "en": "Ain Dubai"}, "dur": null, "blurb": {"tr": ["Dünyanın en büyük dönme dolabında 38 dakikalık tur."], "en": ["A 38-minute ride on the world's largest observation wheel."]}, "inc": {"tr": ["Klimalı kabin girişi", "Dubai silüeti manzarası"], "en": ["A/C cabin entry", "Dubai skyline views"]}, "pkgs": [{"tr": "Non-Peak Saatler", "en": "Non-Peak Saatler", "p": 145}, {"tr": "Peak Saatler", "en": "Peak Saatler", "p": 195}, {"tr": "Plus – Non-Peak", "en": "Plus – Non-Peak", "p": 195}, {"tr": "Plus – Peak", "en": "Plus – Peak", "p": 265}]}, {"slug": "museum-of-the-future", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#B693D6,#8E63BA)", "badge": null, "name": {"tr": "Museum of the Future", "en": "Museum of the Future"}, "dur": null, "blurb": {"tr": ["Dubai'nin ikonik geleceğin müzesinde etkileyici bir deneyim."], "en": ["An immersive experience at Dubai's iconic Museum of the Future."]}, "inc": {"tr": ["Müze girişi", "Tüm katlar & sergiler"], "en": ["Museum entry", "All floors & exhibits"]}, "pkgs": [{"tr": "Zamanlı Giriş", "en": "Timed Entry", "p": 169}]}, {"slug": "dubai-frame", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#F4B073,#E08A44)", "badge": null, "name": {"tr": "Dubai Frame", "en": "Dubai Frame"}, "dur": null, "blurb": {"tr": ["150 metre yükseklikten eski ve yeni Dubai'yi izle."], "en": ["See old and new Dubai from 150 metres high."]}, "inc": {"tr": ["Çerçeve girişi", "Cam köprü deneyimi"], "en": ["Frame entry", "Glass bridge experience"]}, "pkgs": [{"tr": "Giriş Bileti", "en": "Entry Ticket", "p": 53}]}, {"slug": "dubai-aquarium", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#7FC9AE,#3E9D82)", "badge": null, "name": {"tr": "Dubai Aquarium & Underwater Zoo", "en": "Dubai Aquarium & Underwater Zoo"}, "dur": null, "blurb": {"tr": ["Dubai Mall içindeki dev akvaryum ve su altı hayvanat bahçesi."], "en": ["The giant aquarium and underwater zoo inside Dubai Mall."]}, "inc": {"tr": ["Akvaryum tüneli", "Su altı hayvanat bahçesi"], "en": ["Aquarium tunnel", "Underwater zoo"]}, "pkgs": [{"tr": "Silver", "en": "Silver", "p": 199}, {"tr": "Gold", "en": "Gold", "p": 269}, {"tr": "Platinum", "en": "Platinum", "p": 399}]}, {"slug": "aquaventure", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#7FB4DD,#4E86B8)", "badge": ["best", "Çok Satan", "Best Seller"], "name": {"tr": "Aquaventure Su Parkı (Atlantis)", "en": "Aquaventure Su Parkı (Atlantis)"}, "dur": null, "blurb": {"tr": ["Atlantis'in dünyaca ünlü su parkı."], "en": ["Atlantis' world-famous waterpark."]}, "inc": {"tr": ["Su parkı girişi", "Kaydıraklar & lazy river", "Plaj erişimi"], "en": ["Waterpark entry", "Slides & lazy river", "Beach access"]}, "pkgs": [{"tr": "Day Pass (2 kişi)", "en": "Day Pass (2 guests)", "p": 105}, {"tr": "Superpass (2 kişi)", "en": "Superpass (2 guests)", "p": 115}, {"tr": "Waterpark + Lost World Akvaryum", "en": "Waterpark + Lost World Aquarium", "p": 560}]}, {"slug": "atlantis-yunus", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#7FC9AE,#3E9D82)", "badge": null, "name": {"tr": "Atlantis – Yunuslarla Yüzme", "en": "Atlantis – Yunuslarla Yüzme"}, "dur": null, "blurb": {"tr": ["Atlantis'te yunuslarla unutulmaz bir yüzme deneyimi."], "en": ["An unforgettable dolphin swim at Atlantis."]}, "inc": {"tr": ["Yunusla etkileşim", "Eğitmen eşliğinde"], "en": ["Dolphin interaction", "With a trainer"]}, "pkgs": [{"tr": "Yunusla Yüzme Deneyimi", "en": "Dolphin Swim Experience", "p": 825}]}, {"slug": "img-worlds", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#E9A25C,#C9762F)", "badge": null, "name": {"tr": "IMG Worlds of Adventure", "en": "IMG Worlds of Adventure"}, "dur": null, "blurb": {"tr": ["Dünyanın en büyük kapalı tema parkı."], "en": ["The world's largest indoor theme park."]}, "inc": {"tr": ["Sınırsız oyun alanları", "Marvel & Cartoon Network bölgeleri"], "en": ["Unlimited rides", "Marvel & Cartoon Network zones"]}, "pkgs": [{"tr": "Genel Giriş", "en": "General Admission", "p": 365}]}, {"slug": "la-perle", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#B693D6,#8E63BA)", "badge": null, "name": {"tr": "La Perle by Dragone", "en": "La Perle by Dragone"}, "dur": null, "blurb": {"tr": ["Dragone imzalı nefes kesen canlı su gösterisi."], "en": ["A breathtaking live aqua show by Dragone."]}, "inc": {"tr": ["Gösteri bileti", "Kategori koltuk seçimi"], "en": ["Show ticket", "Category seating"]}, "pkgs": [{"tr": "Silver B", "en": "Silver B", "p": 220}, {"tr": "Silver", "en": "Silver", "p": 270}, {"tr": "Gold", "en": "Gold", "p": 330}, {"tr": "Platinum", "en": "Platinum", "p": 520}, {"tr": "VIP + Lounge", "en": "VIP + Lounge", "p": 710}]}, {"slug": "arte-museum", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#B693D6,#8E63BA)", "badge": null, "name": {"tr": "Arte Museum Dubai", "en": "Arte Museum Dubai"}, "dur": null, "blurb": {"tr": ["Dijital sanatın büyüleyici dünyasına adım at."], "en": ["Step into the mesmerising world of digital art."]}, "inc": {"tr": ["Immersive dijital sergiler", "Fotoğraf alanları"], "en": ["Immersive digital exhibits", "Photo areas"]}, "pkgs": [{"tr": "Genel Giriş", "en": "General Admission", "p": 79}, {"tr": "Genel Giriş + Çay Bar", "en": "General Admission + Tea Bar", "p": 99}, {"tr": "VIP Paket", "en": "VIP Package", "p": 269}]}, {"slug": "aya-universe", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#B693D6,#8E63BA)", "badge": null, "name": {"tr": "AYA Universe", "en": "AYA Universe"}, "dur": null, "blurb": {"tr": ["Işık ve teknolojiyle bezenmiş interaktif evren."], "en": ["An interactive universe of light and technology."]}, "inc": {"tr": ["Tüm bölgelere giriş", "İnteraktif alanlar"], "en": ["Access to all zones", "Interactive areas"]}, "pkgs": [{"tr": "Giriş Bileti", "en": "Entry Ticket", "p": 135}]}, {"slug": "dolphinarium", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#7FB4DD,#4E86B8)", "badge": null, "name": {"tr": "Dubai Dolphinarium", "en": "Dubai Dolphinarium"}, "dur": null, "blurb": {"tr": ["Aileler için eğlenceli yunus ve fok gösterileri."], "en": ["Fun dolphin and seal shows for families."]}, "inc": {"tr": ["Gösteri girişi", "Kategori koltuk"], "en": ["Show entry", "Category seating"]}, "pkgs": [{"tr": "Egzotik Kuş Gösterisi", "en": "Exotic Bird Show", "p": 50}, {"tr": "Yunus & Fok Gösterisi – Standart", "en": "Dolphin & Seal Show – Standard", "p": 112}, {"tr": "Yunus & Fok Gösterisi – VIP", "en": "Dolphin & Seal Show – VIP", "p": 130}]}, {"slug": "helidubai", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#8C9BB0,#5C6E86)", "badge": null, "name": {"tr": "HeliDubai Helikopter Turu", "en": "HeliDubai Helikopter Turu"}, "dur": null, "blurb": {"tr": ["Dubai'yi gökyüzünden izle."], "en": ["See Dubai from the sky."]}, "inc": {"tr": ["Helikopter uçuşu", "Panoramik manzara"], "en": ["Helicopter flight", "Panoramic views"]}, "pkgs": [{"tr": "Iconic Tur (12 dk, Paylaşımlı)", "en": "Iconic Tur (12 dk, Shared)", "p": 710}, {"tr": "Iconic Tur (12 dk, Özel)", "en": "Iconic Tur (12 dk, Private)", "p": 3550}]}, {"slug": "marina-cruise", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#7FC9AE,#3E9D82)", "badge": null, "name": {"tr": "Dubai Marina & Creek Tekne Turu", "en": "Dubai Marina & Creek Tekne Turu"}, "dur": null, "blurb": {"tr": ["Dubai Marina ve Creek'te keyifli bir tekne turu."], "en": ["A pleasant boat cruise on Dubai Marina and Creek."]}, "inc": {"tr": ["Tekne turu", "Manzara & fotoğraf molaları"], "en": ["Boat cruise", "Views & photo stops"]}, "pkgs": [{"tr": "Sightseeing Cruise", "en": "Sightseeing Cruise", "p": 125}, {"tr": "Akşam Yemekli Cruise", "en": "Dinner Cruise", "p": 200}]}, {"slug": "house-of-hype", "type": "attr", "city": "Dubai", "grad": "linear-gradient(135deg,#E39AA0,#C56770)", "badge": null, "name": {"tr": "House of Hype", "en": "House of Hype"}, "dur": null, "blurb": {"tr": ["Sosyal medya çağının interaktif eğlence müzesi."], "en": ["An interactive entertainment museum for the social age."]}, "inc": {"tr": ["Tüm interaktif odalar", "Fotoğraf alanları"], "en": ["All interactive rooms", "Photo areas"]}, "pkgs": [{"tr": "Giriş Bileti", "en": "Entry Ticket", "p": 149}]}, {"slug": "seaworld-abu-dhabi", "type": "attr", "city": "Abu Dhabi", "grad": "linear-gradient(135deg,#7FB4DD,#4E86B8)", "badge": ["best", "Çok Satan", "Best Seller"], "name": {"tr": "SeaWorld Abu Dhabi", "en": "SeaWorld Abu Dhabi"}, "dur": null, "blurb": {"tr": ["Dünyanın en büyük deniz yaşam parklarından biri."], "en": ["One of the world's largest marine-life parks."]}, "inc": {"tr": ["Park girişi", "Tüm sergiler & gösteriler"], "en": ["Park entry", "All exhibits & shows"]}, "pkgs": [{"tr": "Genel Giriş", "en": "General Admission", "p": 375}]}, {"slug": "warner-bros-world", "type": "attr", "city": "Abu Dhabi", "grad": "linear-gradient(135deg,#B693D6,#8E63BA)", "badge": null, "name": {"tr": "Warner Bros. World Abu Dhabi", "en": "Warner Bros. World Abu Dhabi"}, "dur": null, "blurb": {"tr": ["Batman, Scooby-Doo ve daha fazlasıyla kapalı tema parkı."], "en": ["Indoor theme park with Batman, Scooby-Doo and more."]}, "inc": {"tr": ["Park girişi", "Tüm bölgeler & oyunlar"], "en": ["Park entry", "All zones & rides"]}, "pkgs": [{"tr": "Genel Giriş", "en": "General Admission", "p": 345}]}, {"slug": "ferrari-world", "type": "attr", "city": "Abu Dhabi", "grad": "linear-gradient(135deg,#E39AA0,#C56770)", "badge": null, "name": {"tr": "Ferrari World Abu Dhabi", "en": "Ferrari World Abu Dhabi"}, "dur": null, "blurb": {"tr": ["Dünyanın en hızlı roller coaster'ına ev sahipliği yapan park."], "en": ["Home to the world's fastest roller coaster."]}, "inc": {"tr": ["Park girişi", "Tüm oyun alanları"], "en": ["Park entry", "All rides"]}, "pkgs": [{"tr": "Genel Giriş", "en": "General Admission", "p": 345}, {"tr": "Passenger Experience", "en": "Passenger Experience", "p": 895}, {"tr": "Driving Experience", "en": "Driving Experience", "p": 1295}, {"tr": "Genel Giriş + Driving", "en": "General Admission + Driving", "p": 1640}]}, {"slug": "yas-waterworld", "type": "attr", "city": "Abu Dhabi", "grad": "linear-gradient(135deg,#7FB4DD,#4E86B8)", "badge": null, "name": {"tr": "Yas Waterworld Abu Dhabi", "en": "Yas Waterworld Abu Dhabi"}, "dur": null, "blurb": {"tr": ["Emirati temalı ödüllü su parkı."], "en": ["Award-winning Emirati-themed waterpark."]}, "inc": {"tr": ["Su parkı girişi", "Kaydıraklar & havuzlar"], "en": ["Waterpark entry", "Slides & pools"]}, "pkgs": [{"tr": "Genel Giriş", "en": "General Admission", "p": 295}]}, {"slug": "yas-island", "type": "attr", "city": "Abu Dhabi", "grad": "linear-gradient(135deg,#E9A25C,#C9762F)", "badge": null, "name": {"tr": "Yas Island Multi-Park", "en": "Yas Island Multi-Park"}, "dur": null, "blurb": {"tr": ["Ferrari World, SeaWorld, Warner Bros ve Yas Waterworld'ü tek biletle gez."], "en": ["Ferrari World, SeaWorld, Warner Bros and Yas Waterworld in one ticket."]}, "inc": {"tr": ["Seçtiğin park sayısı kadar giriş", "Esnek kullanım"], "en": ["Entry to chosen number of parks", "Flexible use"]}, "pkgs": [{"tr": "2 Park", "en": "2 Park", "p": 475}, {"tr": "3 Park", "en": "3 Park", "p": 575}, {"tr": "4 Park", "en": "4 Park", "p": 675}]}, {"slug": "national-aquarium", "type": "attr", "city": "Abu Dhabi", "grad": "linear-gradient(135deg,#7FC9AE,#3E9D82)", "badge": null, "name": {"tr": "The National Aquarium Abu Dhabi", "en": "The National Aquarium Abu Dhabi"}, "dur": null, "blurb": {"tr": ["BAE'nin en büyük akvaryumu."], "en": ["The largest aquarium in the UAE."]}, "inc": {"tr": ["Akvaryum girişi", "10 farklı bölge"], "en": ["Aquarium entry", "10 zones"]}, "pkgs": [{"tr": "Genel Giriş", "en": "General Admission", "p": 110}, {"tr": "Beyond the Glass", "en": "Beyond the Glass", "p": 140}, {"tr": "All-Access Pass", "en": "All-Access Pass", "p": 190}, {"tr": "All-Access + Kelebek Bahçesi", "en": "All-Access + Butterfly Garden", "p": 220}]}, {"slug": "qasr-al-watan", "type": "attr", "city": "Abu Dhabi", "grad": "linear-gradient(135deg,#E6C069,#C69A34)", "badge": null, "name": {"tr": "Qasr Al Watan Sarayı", "en": "Qasr Al Watan Sarayı"}, "dur": null, "blurb": {"tr": ["Cumhurbaşkanlığı Sarayı'nın görkemli mimarisi ve sergileri."], "en": ["The grand architecture and exhibits of the Presidential Palace."]}, "inc": {"tr": ["Saray girişi", "Sergiler & kütüphane"], "en": ["Palace entry", "Exhibits & library"]}, "pkgs": [{"tr": "Value Giriş", "en": "Value Admission", "p": 30}, {"tr": "Flexible Giriş", "en": "Flexible Admission", "p": 65}]}];
+var VISA=[{tr:"30 Gün · Tek Giriş",en:"30 Days · Single Entry",p:350,c:200},{tr:"30 Gün · Çok Giriş",en:"30 Days · Multiple Entry",p:650,c:250},{tr:"60 Gün · Tek Giriş",en:"60 Days · Single Entry",p:500,c:300},{tr:"60 Gün · Çok Giriş",en:"60 Days · Multiple Entry",p:850,c:350}];
+var WA="971559097043";
+var lang="tr", cur="AED";
+var RATE={AED:1,USD:0.2723,TRY:12.9}, SYM={AED:"AED",USD:"$",TRY:"₺"};
+var I={
+ tr:{home:"Anasayfa",tours:"Turlar",visa:"Dubai Vizesi",contact:"İletişim",
+   heroT:"Dubai'yi Keşfet",heroS:"Esila Travel ile Dubai, Abu Dhabi ve ötesi",pick:"Seç",explore:"Keşfet",
+   popAct:"Popüler Aktiviteler",popActS:"En çok tercih edilen tur ve deneyimler",
+   popTic:"Popüler Biletler",popTicS:"Dubai & Abu Dhabi'nin en sevilen biletleri",
+   allTours:"Tüm Turlar",allTickets:"Tüm Biletler",allTitle:"Tüm Biletler & Turlar",
+   allSub:"Fiyatlar kişi başı. Rezervasyon için bir bilete tıkla.",searchPh:"Bilet veya tur ara...",
+   perPerson:"Kişi Başı",fromP:"Başlangıç fiyatı",gateP:"Kapı fiyatı",optionsTxt:"seçenekler var",book:"Rezervasyon →",
+   dateL:"Tarih",adults:"Yetişkin",children:"Çocuk",adultsSub:"13+ yaş",childrenSub:"2-12 yaş",total:"Toplam",bookNow:"Rezervasyon Yap",
+   visaTitle:"Dubai Vizesi",visaSub:"Hızlı ve güvenli Dubai vize başvurusu. Bilgileri doldur, pasaportunu yükle, gerisini biz halledelim.",visaType:"Vize Tipi",nationality:"Uyruk",fullName:"Ad Soyad",passportNo:"Pasaport No",entryDate:"Giriş Tarihi",emailL:"E-posta",phoneL:"Telefon",uploadPassport:"Pasaport / Belge Yükle",uploadHint:"Fotoğraf veya PDF seç (JPG, PNG, PDF)",submitApp:"Başvuruyu Gönder",visaNote:"Başvurun alınınca en kısa sürede WhatsApp'tan seninle iletişime geçeriz. Belgeni WhatsApp'tan da iletebilirsin.",
+   checkAvail:"Uygunluğu Kontrol Et",pickDate:"Tarih Seç",guests:"1 Yetişkin, 0 Çocuk",pkgLabel:"Paket / Bilet Seçeneği",
+   priceUpd:"Fiyat seçtiğin pakete göre güncellenir.",gateNote:"Kapı (satış) fiyatı. Tarih için WhatsApp'tan yazın.",
+   tourDetail:"Tur Detayı",ticketDetail:"Bilet Detayı",included:"Dahil Olanlar",priceTable:"Fiyat Tablosu",
+   info:"Bilgi",infoTxt:"Rezervasyon için WhatsApp'tan yazın, size en uygun tarihi ayarlayalım. Türkçe / İngilizce hizmet.",
+   discount:"indirim",hemenOde:"Hemen Öde",kapora:"Kapora ile Öde",photosHere:"Fotoğraflar buraya gelecek",gorsel:"Görsel",
+   footInfo:"Bilgiler",footCorp:"Kurumsal",footNews:"Bültene Kayıt Ol",footSocial:"Sosyal Medya",subscribe:"Abone Ol",
+   newsPh:"E-posta adresinizi girin",about:"Hakkımızda",terms:"Kullanım Şartları",privacy:"Gizlilik Politikası",
+   waMsg:function(n){return n+" için rezervasyon yapmak istiyorum";}},
+ en:{home:"Home",tours:"Tours",visa:"Dubai Visa",contact:"Contact",
+   heroT:"Discover Dubai",heroS:"Dubai, Abu Dhabi and beyond with Esila Travel",pick:"Choose",explore:"Explore",
+   popAct:"Popular Activities",popActS:"Our most preferred tours and experiences",
+   popTic:"Popular Tickets",popTicS:"The most-loved tickets of Dubai & Abu Dhabi",
+   allTours:"All Tours",allTickets:"All Tickets",allTitle:"All Tickets & Tours",
+   allSub:"Prices are per person. Tap a ticket to book.",searchPh:"Search tickets or tours...",
+   perPerson:"Per Person",fromP:"Starting price",gateP:"Gate price",optionsTxt:"options available",book:"Book →",
+   dateL:"Date",adults:"Adults",children:"Children",adultsSub:"Age 13+",childrenSub:"Age 2-12",total:"Total",bookNow:"Book Now",
+   visaTitle:"Dubai Visa",visaSub:"Fast and secure Dubai visa application. Fill in the details, upload your passport, we'll handle the rest.",visaType:"Visa Type",nationality:"Nationality",fullName:"Full Name",passportNo:"Passport No",entryDate:"Entry Date",emailL:"Email",phoneL:"Phone",uploadPassport:"Upload Passport / Document",uploadHint:"Choose photo or PDF (JPG, PNG, PDF)",submitApp:"Submit Application",visaNote:"Once we receive your application we'll contact you on WhatsApp shortly. You can also send your document via WhatsApp.",
+   checkAvail:"Check Availability",pickDate:"Choose a Date",guests:"1 Adult, 0 Child",pkgLabel:"Package / Ticket Option",
+   priceUpd:"Price updates with the selected package.",gateNote:"Gate (retail) price. Message us on WhatsApp for dates.",
+   tourDetail:"Tour Detail",ticketDetail:"Ticket Detail",included:"What's Included",priceTable:"Price Table",
+   info:"Info",infoTxt:"Message us on WhatsApp to book; we'll arrange the best date for you. Turkish / English service.",
+   discount:"off",hemenOde:"Pay Now",kapora:"Deposit Payment",photosHere:"Photos will go here",gorsel:"Photo",
+   footInfo:"Information",footCorp:"Corporate",footNews:"Subscribe to Newsletter",footSocial:"Social Media",subscribe:"Subscribe",
+   newsPh:"Enter your email address",about:"About Us",terms:"Terms of Use",privacy:"Privacy Policy",
+   waMsg:function(n){return "I'd like to book "+n;}}
+};
+function t(k){return I[lang][k];}
+function money(aed){var r=RATE[cur];if(cur!=="AED")r=r*1.03;var v=Math.round(aed*r);return cur=="AED"?v+" AED":(cur=="USD"?"$"+v:v+" ₺");}
+function minP(p){var m=p.pkgs[0].p;for(var i=1;i<p.pkgs.length;i++)if(p.pkgs[i].p<m)m=p.pkgs[i].p;return m;}
+function ageLine(p){if(!p.age)return '';var s=p.age;if(lang=='tr'){s=s.replace(/Adult/gi,'Yetişkin').replace(/Child/gi,'Çocuk').replace(/years/gi,'yaş');}var nums=(p.age.match(/\d+/g)||[]).map(Number);var mn=nums.length?Math.min.apply(null,nums):0;if(mn>0)s+=' · '+(lang=='tr'?(mn+' yaş altı ücretsiz'):('under '+mn+' free'));return s;}
+function bySlug(s){for(var i=0;i<DATA.length;i++)if(DATA[i].slug==s)return DATA[i];return null;}
+function waLink(msg){return "https://wa.me/"+WA+"?text="+encodeURIComponent(msg);}
+function esc(s){return (s||"").replace(/"/g,'&quot;');}
+
+var SKY='<svg class="sky" viewBox="0 0 1440 510" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="sun" cx="72%" cy="84%" r="30%"><stop offset="0%" stop-color="#FFF4D6" stop-opacity="0.95"/><stop offset="45%" stop-color="#FFD79A" stop-opacity="0.5"/><stop offset="100%" stop-color="#FFD79A" stop-opacity="0"/></radialGradient></defs><rect width="1440" height="510" fill="url(#sun)"/><g fill="#3A2A2E" opacity="0.82"><rect x="40" y="350" width="60" height="160"/><rect x="110" y="320" width="46" height="190"/><rect x="165" y="370" width="70" height="140"/><rect x="245" y="330" width="40" height="180"/><rect x="300" y="380" width="80" height="130"/><rect x="395" y="310" width="52" height="200"/><rect x="460" y="270" width="34" height="240"/><polygon points="690,510 700,105 712,105 722,510"/><line x1="706" y1="105" x2="706" y2="60" stroke="#3A2A2E" stroke-width="4"/><rect x="600" y="330" width="46" height="180"/><rect x="655" y="380" width="34" height="130"/><rect x="740" y="300" width="40" height="210"/><rect x="790" y="360" width="70" height="150"/><rect x="870" y="320" width="46" height="190"/><rect x="925" y="370" width="80" height="140"/><path d="M1050 510 L1050 280 Q1120 240 1120 350 L1120 510 Z"/><rect x="1140" y="330" width="50" height="180"/><rect x="1200" y="300" width="38" height="210"/><rect x="1250" y="370" width="72" height="140"/><rect x="1330" y="330" width="46" height="180"/><rect x="1390" y="380" width="50" height="130"/></g><rect x="0" y="492" width="1440" height="18" fill="#2A1E22" opacity="0.5"/></svg>';
+
+function phTile(p,cls){var b=p.badge?'<span class="badge '+p.badge[0]+'">'+(lang=="tr"?p.badge[1]:p.badge[2])+'</span>':'';
+  if(p.photo)return '<div class="ph'+(cls?' '+cls:'')+'" style="background:url(\''+p.photo+'\') center/cover">'+b+'<span class="t-city">'+p.city+'</span></div>';
+  return '<div class="ph'+(cls?' '+cls:'')+'" style="background:'+p.grad+'">'+b+'<span class="phwm">ESILA&nbsp;TRAVEL</span><span class="t-city">'+p.city+'</span><span class="phtag">'+t('gorsel')+'</span></div>';}
+
+function card(p){
+  var inner;
+  if(p.type=="tour"){
+    inner='<div class="dur">'+p.dur[lang]+'</div><div class="sp">'+t('fromP')+'</div>'+
+      '<div class="prow"><div class="pcol"><span class="orig">'+money(p.orig)+'</span><span class="now">'+money(p.now)+'</span></div>'+
+      '<span class="disc">%'+p.disc+' '+t('discount')+'</span></div>';
+  } else {
+    var multi=p.pkgs.length>1, fm=(p.now!=null?p.now:minP(p));
+    inner='<div class="dur">'+p.city+'</div><div class="sp">'+(multi?t('fromP'):t('gateP'))+'</div>'+
+      '<div class="prow"><div class="pcol"><span class="now">'+money(fm)+'</span>'+(multi?'<span class="frm">'+t('optionsTxt')+'</span>':'')+'</div>'+
+      '<span class="cta">'+t('book')+'</span></div>';
+  }
+  return '<a onclick="go(\'p/'+p.slug+'\')"><div class="card">'+phTile(p)+'<div class="cb"><div class="ct">'+p.name[lang]+'</div>'+inner+'</div></div></a>';
+}
+
+function viewHome(){
+  var tours=DATA.filter(function(p){return p.type=="tour";});
+  var prevSlugs=["burj-khalifa","museum-of-the-future","view-at-the-palm","ain-dubai","dubai-aquarium","ferrari-world","seaworld-abu-dhabi","yas-island"];
+  var prev=prevSlugs.map(bySlug).filter(Boolean);
+  return '<div class="hero2"><div class="wrap"><div class="kick">'+(lang=="tr"?"NET FİYAT · KOLAY REZERVASYON · TÜRKÇE DESTEK":"NET PRICES · EASY BOOKING · TURKISH SUPPORT")+'</div>'+
+    '<h1>'+t('heroT')+'</h1><p>'+t('heroS')+'</p>'+
+    '<div class="hsearch"><input type="text" id="hsQ" onkeydown="if(event.key===\'Enter\')heroSearch()" placeholder="'+(lang=="tr"?"Ne aramak istersin? (ör. Burj Khalifa, safari...)":"What are you looking for?")+'"><select id="hsCity"><option value="">'+(lang=="tr"?"Tüm Şehirler":"All Cities")+'</option><option value="Dubai">Dubai</option><option value="Abu Dhabi">Abu Dhabi</option></select><button onclick="heroSearch()">'+t('explore')+'</button></div>'+
+    '</div></div>'+
+    '<div class="wrap sec"><h2 class="sec-h">'+t('popAct')+'</h2><div class="sec-sub">'+t('popActS')+'</div><div class="cards">'+tours.map(card).join('')+'</div>'+
+    '<div class="all-tours"><a onclick="go(\'turlar\')">'+t('allTours')+'</a></div></div>'+
+    '<div class="wrap sec"><h2 class="sec-h">'+t('popTic')+'</h2><div class="sec-sub">'+t('popTicS')+'</div><div class="cards">'+prev.map(card).join('')+'</div>'+
+    '<div class="all-tours"><a onclick="go(\'turlar\')">'+t('allTickets')+'</a></div></div>';
+}
+
+function listGrouped(){
+  var dub=DATA.filter(function(p){return p.city=="Dubai";});
+  var auh=DATA.filter(function(p){return p.city=="Abu Dhabi";});
+  return '<h2 class="grpttl">Dubai</h2><div class="cards">'+dub.map(card).join('')+'</div>'+
+    '<h2 class="grpttl">Abu Dhabi</h2><div class="cards">'+auh.map(card).join('')+'</div>';
+}
+function viewList(){
+  return '<div class="wrap"><div class="pagehead"><h1>'+t('allTitle')+'</h1><p>'+t('allSub')+'</p></div>'+
+    '<div class="searchrow"><input id="q" oninput="applyFilter()" placeholder="'+t('searchPh')+'"><select id="qcity" onchange="applyFilter()"><option value="">'+(lang=="tr"?"Tüm Şehirler":"All Cities")+'</option><option value="Dubai">Dubai</option><option value="Abu Dhabi">Abu Dhabi</option></select></div>'+
+    '<div id="listwrap">'+listGrouped()+'</div></div>';
+}
+function applyFilter(){
+  var qe=document.getElementById('q'), ce=document.getElementById('qcity'); if(!qe)return;
+  var q=(qe.value||"").toLowerCase().trim(); var c=ce?ce.value:"";
+  var lw=document.getElementById('listwrap');
+  if(!q && !c){lw.innerHTML=listGrouped();return;}
+  var res=DATA.filter(function(p){var okq=!q||p.name[lang].toLowerCase().indexOf(q)>=0||p.city.toLowerCase().indexOf(q)>=0;var okc=!c||p.city==c;return okq&&okc;});
+  lw.innerHTML=res.length?('<div class="cards">'+res.map(card).join('')+'</div>'):('<p style="color:var(--muted);padding:24px 0">'+(lang=="tr"?"Sonuç bulunamadı.":"No results found.")+'</p>');
+}
+
+function isPV(p){return p&&p.type=="tour"&&p.pkgs&&p.pkgs.length>0;}
+function viewDetail(slug){
+  var p=bySlug(slug); if(!p)return viewHome();
+  var badge=p.badge?'<span class="p-tag '+p.badge[0]+'">'+(lang=="tr"?p.badge[1]:p.badge[2])+'</span>':'<span class="p-tag pop">'+(lang=="tr"?"Popüler":"Popular")+'</span>';
+  var priceBlock, priceRow="";
+  if(isPV(p)){
+    var vopts=p.pkgs.map(function(k,i){return '<option value="'+i+'">'+k[lang]+' · '+money(k.p)+'</option>';}).join('');
+    priceBlock='<div class="bb-label">'+(lang=="tr"?"Araç Seçimi":"Vehicle")+'</div><select class="bb-select" id="pkg" onchange="bUpd()">'+vopts+'</select>'+
+      '<div class="bb-prow"><span class="bb-per">'+(lang=="tr"?"Araç Başı":"Per Vehicle")+'</span><span class="bb-now" id="dprice">'+money(p.pkgs[0].p)+'</span></div>'+
+      '<div class="bb-note">'+(lang=="tr"?"Fiyat araç başınadır, kişi sayısına göre değil.":"Price is per vehicle, not per person.")+'</div>';
+    var vrows=p.pkgs.map(function(k){return '<tr><td>'+k[lang]+'</td><td class="pr">'+money(k.p)+'</td></tr>';}).join('');
+    priceRow='<div class="d-row"><div class="d-label">'+(lang=="tr"?"Araç Fiyatları":"Vehicle Prices")+'</div><div class="d-body"><table class="ptable">'+vrows+'</table></div></div>';
+  } else if(p.type=="tour"){
+    priceBlock='<div class="bb-prow"><span class="bb-per">'+t('perPerson')+'</span><span class="bb-price"><span class="bb-orig">'+money(p.orig)+'</span><span class="bb-now">'+money(p.now)+'</span></span></div>'+
+      '<div class="bb-disc">%'+p.disc+' '+t('discount')+'</div>';
+  } else if(p.pkgs.length>1){
+    var opts=p.pkgs.map(function(k,i){return '<option value="'+i+'">'+k[lang]+' · '+money(k.p)+'</option>';}).join('');
+    priceBlock='<div class="bb-label">'+t('pkgLabel')+'</div><select class="bb-select" id="pkg" onchange="bUpd()">'+opts+'</select>'+
+      '<div class="bb-prow"><span class="bb-per">'+t('perPerson')+'</span><span class="bb-now" id="dprice">'+money(p.pkgs[0].p)+'</span></div>'+
+      '<div class="bb-note">'+t('priceUpd')+'</div>';
+    var rows=p.pkgs.map(function(k){return '<tr><td>'+k[lang]+'</td><td class="pr">'+money(k.p)+'</td></tr>';}).join('');
+    priceRow='<div class="d-row"><div class="d-label">'+t('priceTable')+'</div><div class="d-body"><table class="ptable">'+rows+'</table></div></div>';
+  } else {
+    priceBlock='<div class="bb-prow"><span class="bb-per">'+t('perPerson')+'</span><span class="bb-now">'+money(p.now!=null?p.now:p.pkgs[0].p)+'</span></div>'+
+      '<div class="bb-note">'+t('gateNote')+'</div>';
+  }
+  var paxRows=isPV(p)
+    ? '<div class="bb-note" style="margin:10px 0 0;color:var(--muted)">'+(lang=="tr"?"Seçtiğin araç kapasitesine kadar kişi dahildir.":"Includes guests up to the selected vehicle capacity.")+'</div>'
+    : '<div class="pax-row"><div><div class="pax-t">'+t('adults')+'</div><div class="pax-s">'+t('adultsSub')+'</div></div>'+
+    '<div class="pax-ctrl"><button class="pax-b" onclick="pax(\'a\',-1)">−</button><span class="pax-n" id="na">1</span><button class="pax-b plus" onclick="pax(\'a\',1)">+</button></div></div>'+
+    '<div class="pax-row"><div><div class="pax-t">'+t('children')+'</div><div class="pax-s">'+t('childrenSub')+'</div></div>'+
+    '<div class="pax-ctrl"><button class="pax-b" onclick="pax(\'c\',-1)">−</button><span class="pax-n" id="nc">0</span><button class="pax-b plus" onclick="pax(\'c\',1)">+</button></div></div>'+
+    (p.age?'<div class="bb-note" style="margin:8px 0 0;color:var(--muted)">'+ageLine(p)+'</div>':'')+
+    '<div class="bb-note" id="bprices" style="margin:6px 0 0"></div>';
+  var box=priceBlock+
+    '<div class="bb-label" style="margin-top:2px">'+t('dateL')+'</div>'+
+    '<input type="date" class="bb-input" id="bdate" onchange="bUpd()">'+
+    paxRows+
+    '<div class="bb-total"><span>'+t('total')+'</span><span id="btot">—</span></div>'+
+    '<div id="bpay"></div>'+
+    '<button class="bb-add" id="addBtn" onclick="addToCart()">'+(lang=="tr"?"Sepete Ekle":"Add to Cart")+'</button>'+
+    '<a id="dwa" href="#"><button class="bb-btn">'+(lang=="tr"?"WhatsApp'tan Sor":"Ask on WhatsApp")+'</button></a>';
+  var payTag=p.type=="tour"?(lang=="tr"?"%50 Kapora":"50% Deposit"):(lang=="tr"?"%100 Ödeme":"Full Payment");
+  var tags=badge+'<span class="p-tag grey">'+(p.type=="tour"?p.dur[lang]:p.city)+'</span><span class="p-tag grey">'+payTag+'</span>';
+  var blurb=(p.blurb[lang]||[]).map(function(x){return '<p>'+x+'</p>';}).join('');
+  var inc=(p.inc[lang]||[]).join('<br>');
+  var social='<div class="bb-social"><a href="https://wa.me/'+WA+'" class="wa"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3z"/></svg></a><a>Fb</a><a>Ig</a><a>Share</a></div>';
+  var html='<div class="wrap"><div class="crumb"><a onclick="go(\'\')">'+t('home')+'</a><span class="sep">›</span><a onclick="go(\'turlar\')">'+t('tours')+'</a><span class="sep">›</span>'+p.name[lang]+'</div>'+
+    '<h1 class="p-title">'+p.name[lang]+'</h1><div class="p-tags">'+tags+'</div>'+
+    '<div class="p-layout">'+(p.photo?'<div class="gallery" style="background:url(\''+p.photo+'\') center/cover"></div>':'<div class="gallery" style="background:'+p.grad+'"><span class="phwm">ESILA&nbsp;TRAVEL</span><div class="hint">'+t('photosHere')+'</div></div>')+
+    '<div class="book-box">'+box+social+'</div></div>'+
+    '<div class="detail"><div class="d-row"><div class="d-label">'+(p.type=="tour"?t('tourDetail'):t('ticketDetail'))+'</div><div class="d-body">'+blurb+'</div></div>'+
+    priceRow+
+    '<div class="d-row"><div class="d-label">'+t('included')+'</div><div class="d-body">'+inc+'</div></div>'+
+    '<div class="d-row"><div class="d-label">'+t('info')+'</div><div class="d-body">'+t('infoTxt')+'</div></div></div></div>';
+  window.__cur=p;
+  return html;
+}
+function getUnit(p){var s=document.getElementById('pkg'); if(s)return p.pkgs[+s.value].p; if(p.type=="tour")return p.now; return (p.now!=null?p.now:p.pkgs[0].p);}
+function bUpd(){
+  var p=window.__cur; if(!p)return;
+  var s=document.getElementById('pkg');
+  if(s){var dp=document.getElementById('dprice'); if(dp)dp.textContent=money(p.pkgs[+s.value].p);}
+  var pv=isPV(p);
+  var na=window.__na||1, nc=window.__nc||0, unit=getUnit(p);
+  var cu=(p.child!=null?p.child:unit), tot=pv?unit:(unit*na+cu*nc);
+  var bt=document.getElementById('btot'); if(bt)bt.textContent=money(tot);
+  var bp=document.getElementById('bprices'); if(bp&&!pv)bp.textContent=(lang=="tr"?"Yetişkin: ":"Adult: ")+money(unit)+" · "+(lang=="tr"?"Çocuk: ":"Child: ")+money(cu);
+  var payTxt="";
+  if(p.type=="tour"){var dep=tot*0.5;payTxt=(lang=="tr"
+    ?'<b>Kapora (%50):</b> '+money(dep)+' &middot; <b>Kalan:</b> '+money(tot-dep)+'<br><span style="color:var(--muted)">Turlar %50 kapora ile rezerve edilir, kalanı tur öncesi ödenir.</span>'
+    :'<b>Deposit (50%):</b> '+money(dep)+' &middot; <b>Balance:</b> '+money(tot-dep)+'<br><span style="color:var(--muted)">Tours are reserved with a 50% deposit; the balance is paid before the tour.</span>');}
+  else{payTxt=(lang=="tr"
+    ?'<b>Ödeme:</b> %100 &middot; '+money(tot)+'<br><span style="color:var(--muted)">Biletlerde tam ödeme alınır; ödeme sonrası biletiniz tarafımızdan gönderilir.</span>'
+    :'<b>Payment:</b> 100% &middot; '+money(tot)+'<br><span style="color:var(--muted)">Tickets require full payment; your ticket is sent to you after payment.</span>');}
+  var pe=document.getElementById('bpay'); if(pe)pe.innerHTML='<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:11px;padding:11px 13px;margin:10px 0 14px;font-size:13px;line-height:1.55;color:#9A3412">'+payTxt+'</div>';
+  var d=document.getElementById('bdate'); var ds=(d&&d.value)?d.value:(lang=="tr"?"(tarih seç)":"(pick date)");
+  var pk=s?(" - "+p.pkgs[+s.value][lang]):"";
+  var payMsg=p.type=="tour"?(lang=="tr"?" (%50 kapora ile)":" (with 50% deposit)"):(lang=="tr"?" (tam ödeme)":" (full payment)");
+  var whoMsg=pv?"":(", "+na+" "+(lang=="tr"?"yetişkin":"adult")+", "+nc+" "+(lang=="tr"?"çocuk":"child"));
+  var msg=p.name[lang]+pk+", "+ds+whoMsg+", "+(lang=="tr"?"toplam":"total")+" "+money(tot)+payMsg+" — "+(lang=="tr"?"rezervasyon yapmak istiyorum":"I'd like to book");
+  var w=document.getElementById('dwa'); if(w)w.href=waLink(msg);
+}
+function pax(which,delta){
+  if(which=='a'){window.__na=Math.max(1,(window.__na||1)+delta);document.getElementById('na').textContent=window.__na;}
+  else{window.__nc=Math.max(0,(window.__nc||0)+delta);document.getElementById('nc').textContent=window.__nc;}
+  bUpd();
+}
+function initDetail(){
+  window.__na=1; window.__nc=0;
+  var d=document.getElementById('bdate');
+  if(d){var n=new Date();var mm=("0"+(n.getMonth()+1)).slice(-2);var dd=("0"+n.getDate()).slice(-2);d.min=n.getFullYear()+"-"+mm+"-"+dd;}
+  bUpd();
+}
+function heroSearch(){var q=document.getElementById('hsQ');var c=document.getElementById('hsCity');window.__pre={q:q?q.value:"",city:c?c.value:""};go('turlar');}
+
+function renderChrome(){
+  cartBadge();
+  document.getElementById('nv_home').textContent=t('home');
+  document.getElementById('nv_tours').textContent=t('tours');
+  document.getElementById('nv_visa').textContent=t('visa');
+  document.getElementById('nv_about').textContent=t('about');
+  document.getElementById('nv_contact').textContent=t('contact');
+  document.getElementById('ftr').innerHTML=
+   '<div class="wrap foot-grid"><div class="foot-info"><div class="foot-h">'+t('footInfo')+'</div>'+
+   '<p><b>Ana Ofis:</b> Murano 5 - Al Asayel St - Jebel Ali Village - Al Furjan - Dubai</p>'+
+   '<p><b>'+(lang=="tr"?"Telefon":"Phone")+':</b> <a href="https://wa.me/'+WA+'">+971 559097043</a></p>'+
+   '<p><b>'+(lang=="tr"?"E-posta":"Email")+':</b> <a href="mailto:info@esilatraveldubai.com">info@esilatraveldubai.com</a></p></div>'+
+   '<div><div class="foot-h">'+t('footCorp')+'</div><ul class="foot-links">'+
+   '<li><a onclick="go(\'\')">'+t('home')+'</a></li><li><a onclick="go(\'turlar\')">'+t('tours')+'</a></li>'+
+   '<li><a onclick="go(\'hakkimizda\')">'+t('about')+'</a></li><li><a onclick="go(\'sartlar\')">'+t('terms')+'</a></li><li><a onclick="go(\'gizlilik\')">'+t('privacy')+'</a></li><li><a href="https://wa.me/'+WA+'">'+t('contact')+'</a></li></ul></div>'+
+   '<div><div class="foot-h">'+t('footNews')+'</div><form class="newsletter" onsubmit="return false"><input type="email" placeholder="'+t('newsPh')+'"><button type="submit">'+t('subscribe')+'</button></form>'+
+   '<div class="foot-h" style="font-size:16px">'+t('footSocial')+'</div><div class="foot-social" style="display:flex;gap:10px;flex-wrap:wrap"><a href="https://instagram.com/esilatraveldubai" target="_blank">Instagram</a><a href="https://www.facebook.com/profile.php?id=61575896330958" target="_blank">Facebook</a><a href="https://tiktok.com/@esilatraveldubai" target="_blank">TikTok</a></div></div></div>'+
+   '<div class="foot-bottom">© 2026 Esila Travel Dubai · ET Travel FZ-LLC · '+(lang=="tr"?"Tüm hakları saklıdır":"All rights reserved")+'</div>';
+}
+
+function vField(lbl,inp){return '<div class="bb-label" style="margin-top:10px">'+lbl+'</div>'+inp;}
+function vSlotHTML(id,label,ocr){return '<div class="bb-label" style="margin-top:12px">'+label+'</div>'+
+  '<label class="vupload"><input type="file" id="'+id+'" accept="image/*,application/pdf" style="display:none" onchange="'+(ocr?'vPassport(this)':"vSlot(this,'"+id+"')")+'">'+
+  '<div class="vupload-in"><div class="vu-ic">&#8593;</div><div><div class="vu-t">'+label+'</div><div class="vu-s" id="'+id+'_n">'+(lang=="tr"?"Fotoğraf veya PDF seç":"Choose photo or PDF")+'</div></div></div></label>';}
+function copyRef(){var el=document.getElementById('refNo');if(!el)return;var txt=el.textContent;function done(){var c=document.getElementById('refCopied');if(c){c.style.display='inline';setTimeout(function(){c.style.display='none';},2000);}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallbackCopy(txt);done();});}else{fallbackCopy(txt);done();}}
+function fallbackCopy(txt){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+function viewAbout(){
+  var L=lang=="tr";
+  function row(k,v){return '<tr><td style="padding:11px 14px;color:#64748B;font-weight:600;white-space:nowrap;vertical-align:top;border-bottom:1px solid var(--line)">'+k+'</td><td style="padding:11px 14px;color:var(--ink);font-weight:600;border-bottom:1px solid var(--line)">'+v+'</td></tr>';}
+  var intro=L
+    ?"Esila Travel Dubai, Birleşik Arap Emirlikleri'nde resmi olarak kayıtlı ve lisanslı bir seyahat şirketi olan <b>ET Travel FZ-LLC</b> markasıdır. Ras Al Khaimah Ekonomik Bölgesi (RAKEZ) tarafından düzenlenen resmi lisansımızla Dubai, Abu Dhabi ve BAE genelinde bilet, tur ve vize hizmeti sunuyoruz. Tüm işlemleriniz kayıt altında ve güvence altındadır."
+    :"Esila Travel Dubai is a brand of <b>ET Travel FZ-LLC</b>, a travel company officially registered and licensed in the United Arab Emirates. With our official licence issued by the Ras Al Khaimah Economic Zone (RAKEZ), we provide tickets, tours and visa services across Dubai, Abu Dhabi and the UAE. All your transactions are recorded and secured.";
+  var licTable='<table style="width:100%;border-collapse:collapse;font-size:14.5px">'+
+    row(L?"Şirket Ünvanı":"Legal Name","ET TRAVEL FZ-LLC")+
+    row(L?"Ticari Marka":"Brand","Esila Travel Dubai")+
+    row(L?"Lisans No":"Licence No","17005913")+
+    row(L?"Lisans Türü":"Licence Type",L?"Serbest Bölge Limited Şirketi (Free Zone LLC)":"Free Zone Limited Liability Company (FZ-LLC)")+
+    row(L?"Faaliyet":"Activity",L?"Destinasyon Yönetimi":"Destination Management")+
+    row(L?"Yetkili / Müdür":"Manager","Erhan Topcu")+
+    row(L?"Düzenleyen Kurum":"Issuing Authority",L?"Ras Al Khaimah Ekonomik Bölgesi (RAKEZ) – Ras Al Khaimah Hükümeti":"Ras Al Khaimah Economic Zone (RAKEZ) – Government of Ras Al Khaimah")+
+    row(L?"Adres":"Address","FDRK5374, Compass Building, Al Shohada Road, Al Hamra Industrial Zone-FZ, Ras Al Khaimah, "+(L?"BAE":"UAE"))+
+    row(L?"Geçerlilik":"Validity",L?"24 Haziran 2025 – 23 Haziran 2027":"24 June 2025 – 23 June 2027")+
+    '</table>';
+  var verify='<div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:16px;padding:22px 24px;margin-top:24px">'+
+    '<div style="font-weight:800;font-size:17px;color:#15803D;margin-bottom:8px">'+(L?"Lisansımızı Kendiniz Doğrulayın":"Verify Our Licence Yourself")+'</div>'+
+    '<p style="margin:0 0 14px;color:#166534;font-size:14.5px;line-height:1.6">'+(L?"Güveniniz bizim için önemli. Lisansımızın gerçekliğini RAKEZ resmi doğrulama sisteminden aşağıdaki referans numarasıyla kontrol edebilirsiniz.":"Your trust matters to us. You can verify the authenticity of our licence on the official RAKEZ verification system using the reference number below.")+'</p>'+
+    '<div style="background:#fff;border:1px solid #BBF7D0;border-radius:10px;padding:12px 14px;margin-bottom:8px"><div style="font-size:12px;color:#64748B;font-weight:600;margin-bottom:3px">'+(L?"Doğrulama Referans No":"Verification Reference No")+'</div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span id="refNo" style="font-weight:800;color:var(--ink);font-size:15px;letter-spacing:.3px;word-break:break-all">1414230-liIv-9AiV-69514451</span><button onclick="copyRef()" style="border:1px solid #16A34A;background:#F0FDF4;color:#15803D;font-weight:700;font-size:12.5px;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit">'+(L?"Kopyala":"Copy")+'</button><span id="refCopied" style="display:none;color:#16A34A;font-size:12.5px;font-weight:700">'+(L?"Kopyalandı":"Copied")+'</span></div></div>'+
+    '<div style="font-size:12.5px;color:#166534;margin-bottom:14px">'+(L?"Not: Numarayı elle yazmayın, Kopyala\'ya basıp doğrulama alanına yapıştırın (harfler benzer görünebilir).":"Note: do not type it by hand — click Copy and paste it into the verification field (some letters look similar).")+'</div>'+
+    '<a href="https://eservices.rakez.com/auth/" target="_blank" rel="noopener" style="display:inline-block;background:#16A34A;color:#fff;font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:11px;text-decoration:none">'+(L?"RAKEZ Doğrulama Sistemine Git":"Go to RAKEZ Verification System")+'</a>'+
+    '</div>';
+  return '<section class="wrap" style="padding:44px 24px 60px;max-width:900px;margin:0 auto">'+
+    '<h1 style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--ink);margin:0 0 10px">'+(L?"Hakkımızda":"About Us")+'</h1>'+
+    '<p style="font-size:16px;line-height:1.7;color:#475569;margin:0 0 30px">'+intro+'</p>'+
+    '<div style="font-weight:800;font-size:19px;color:var(--ink);margin:0 0 14px">'+(L?"Resmi Lisans Bilgileri":"Official Licence Details")+'</div>'+
+    '<div style="border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(20,30,45,.05)">'+licTable+'</div>'+
+    verify+
+    '<div style="margin-top:26px;padding:18px 20px;background:#FFF7ED;border:1px solid #FED7AA;border-radius:14px;color:#9A3412;font-size:14px;line-height:1.6">'+(L?"Sorularınız için bize <a href=\"https://wa.me/"+WA+"\" style=\"color:#C2410C;font-weight:700\">WhatsApp</a> veya <a href=\"mailto:info@esilatraveldubai.com\" style=\"color:#C2410C;font-weight:700\">info@esilatraveldubai.com</a> üzerinden ulaşabilirsiniz. Türkçe ve İngilizce hizmet veriyoruz.":"For any questions, reach us on <a href=\"https://wa.me/"+WA+"\" style=\"color:#C2410C;font-weight:700\">WhatsApp</a> or <a href=\"mailto:info@esilatraveldubai.com\" style=\"color:#C2410C;font-weight:700\">info@esilatraveldubai.com</a>. We serve in Turkish and English.")+'</div>'+
+    '</section>';
+}
+function docPage(title,blocks){
+  var body=blocks.map(function(b){return '<h2 style="font-size:19px;font-weight:800;color:var(--ink);margin:26px 0 8px">'+b[0]+'</h2><p style="font-size:15px;line-height:1.75;color:#475569;margin:0">'+b[1]+'</p>';}).join('');
+  return '<section class="wrap" style="padding:44px 24px 60px;max-width:860px;margin:0 auto">'+
+    '<h1 style="font-size:clamp(28px,4vw,38px);font-weight:800;color:var(--ink);margin:0 0 6px">'+title+'</h1>'+
+    '<div style="color:#94A3B8;font-size:13px;font-weight:600;margin-bottom:8px">ET TRAVEL FZ-LLC · '+(lang=="tr"?"Son güncelleme":"Last updated")+': 2026</div>'+
+    body+'</section>';
+}
+function viewTerms(){
+  var L=lang=="tr";
+  var b=L?[
+   ["1. Genel","Bu web sitesi ET Travel FZ-LLC (Esila Travel Dubai) tarafından işletilmektedir. Siteyi kullanarak veya rezervasyon yaparak aşağıdaki şartları kabul etmiş olursunuz. Şirket, RAKEZ (Ras Al Khaimah Ekonomik Bölgesi) lisansı 17005913 ile faaliyet gösterir."],
+   ["2. Rezervasyon ve Ödeme","Tüm fiyatlar kişi başıdır ve aksi belirtilmedikçe seçilen tarih ve pakete göre belirlenir. Rezervasyonunuz, ödemeniz onaylandıktan sonra kesinleşir. Bazı biletler tedarikçi onayına tabidir; onaylanmadığı durumda ödemeniz iade edilir."],
+   ["3. Biletler ve Turlar","Bilet ve tur fiyatları güncel kapı (perakende) fiyatları esas alınarak belirlenir. Etkinlik saatleri, uygunluk ve iptal koşulları ilgili tedarikçinin kurallarına tabidir. Satın alınan biletlerin geçerlilik tarihlerine dikkat ediniz."],
+   ["4. Vize Hizmeti","Vize başvuruları için verdiğiniz belgelerin (pasaport, fotoğraf, uçak bileti, otel rezervasyonu) doğru ve pasaportla birebir aynı olması gerekir. Yanlış bilgi vize reddine yol açabilir. Vize ücretleri, başvuru reddedilse dahi iade edilmez. Vize onay süresi genellikle 24–72 saattir."],
+   ["5. İptal ve İade","Bilet ve tur iptal koşulları tedarikçiye göre değişir; iptal talepleri WhatsApp üzerinden iletilmelidir. Vize ücretleri iade edilmez. Onaylanmayan rezervasyonların ücreti tam olarak iade edilir."],
+   ["6. Sorumluluk","Şirket, hava koşulları, tedarikçi kaynaklı değişiklikler veya mücbir sebeplerden doğan aksaklıklardan sorumlu tutulamaz. Hizmet, seçilen tedarikçi ve resmi kurumların kural ve koşulları çerçevesinde sunulur."],
+   ["7. İletişim","Sorularınız için WhatsApp (+971 559097043) veya info@esilatraveldubai.com üzerinden bize ulaşabilirsiniz."]
+  ]:[
+   ["1. General","This website is operated by ET Travel FZ-LLC (Esila Travel Dubai). By using the site or making a booking you accept the terms below. The company operates under RAKEZ (Ras Al Khaimah Economic Zone) licence 17005913."],
+   ["2. Booking & Payment","All prices are per person and, unless stated otherwise, depend on the selected date and package. Your booking is confirmed once your payment is approved. Some tickets are subject to supplier confirmation; if not confirmed, your payment is refunded."],
+   ["3. Tickets & Tours","Ticket and tour prices are based on current gate (retail) prices. Event times, availability and cancellation terms follow the relevant supplier's rules. Please note the validity dates of purchased tickets."],
+   ["4. Visa Service","For visa applications, the documents you provide (passport, photo, flight ticket, hotel booking) must be accurate and match your passport exactly. Incorrect information may cause a visa rejection. Visa fees are non-refundable even if the application is rejected. Processing usually takes 24–72 hours."],
+   ["5. Cancellation & Refund","Ticket and tour cancellation terms vary by supplier; cancellation requests must be sent via WhatsApp. Visa fees are non-refundable. Unconfirmed bookings are refunded in full."],
+   ["6. Liability","The company is not liable for disruptions arising from weather, supplier-side changes or force majeure. Services are provided within the rules and conditions of the chosen supplier and official authorities."],
+   ["7. Contact","For questions, reach us on WhatsApp (+971 559097043) or info@esilatraveldubai.com."]
+  ];
+  return docPage(L?"Kullanım Şartları":"Terms of Use",b);
+}
+function viewPrivacy(){
+  var L=lang=="tr";
+  var b=L?[
+   ["1. Hangi Bilgileri Topluyoruz","Rezervasyon ve vize işlemleri için ad-soyad, iletişim bilgileri (e-posta, telefon) ve vize başvurusu için pasaport bilgileri ile yüklediğiniz belgeleri (pasaport, fotoğraf, uçak bileti, otel rezervasyonu) topluyoruz."],
+   ["2. Bilgileri Nasıl Kullanıyoruz","Bilgileriniz yalnızca rezervasyonunuzu ve vize başvurunuzu tamamlamak, sizinle iletişim kurmak ve yasal yükümlülükleri yerine getirmek için kullanılır. Pasaport ve belgeleriniz sadece ilgili başvuru için işlenir."],
+   ["3. Bilgi Paylaşımı","Bilgileriniz, yalnızca işleminizin gerçekleştirilmesi için gerekli olan resmi kurumlar ve tedarikçilerle paylaşılır. Bilgileriniz pazarlama amacıyla üçüncü taraflara satılmaz."],
+   ["4. Belge Güvenliği","Pasaport gibi hassas belgeler güvenli şekilde işlenir ve yalnızca başvuru süresince kullanılır. Ödeme bilgileri sitede saklanmaz."],
+   ["5. Haklarınız","Verilerinize erişme, düzeltme veya silinmesini talep etme hakkına sahipsiniz. Bu talepler için info@esilatraveldubai.com adresine yazabilirsiniz."],
+   ["6. İletişim","Gizlilik ile ilgili sorularınız için WhatsApp (+971 559097043) veya info@esilatraveldubai.com üzerinden bize ulaşabilirsiniz."]
+  ]:[
+   ["1. What We Collect","For bookings and visa processing we collect your name, contact details (email, phone), and for visa applications your passport details and the documents you upload (passport, photo, flight ticket, hotel booking)."],
+   ["2. How We Use Your Data","Your data is used only to complete your booking and visa application, to communicate with you, and to meet legal obligations. Your passport and documents are processed solely for the relevant application."],
+   ["3. Data Sharing","Your data is shared only with official authorities and suppliers necessary to carry out your transaction. Your data is not sold to third parties for marketing."],
+   ["4. Document Security","Sensitive documents such as passports are handled securely and used only for the duration of the application. Payment details are not stored on the site."],
+   ["5. Your Rights","You have the right to access, correct or request deletion of your data. For such requests, email info@esilatraveldubai.com."],
+   ["6. Contact","For privacy questions, reach us on WhatsApp (+971 559097043) or info@esilatraveldubai.com."]
+  ];
+  return docPage(L?"Gizlilik Politikası":"Privacy Policy",b);
+}
+function viewVisa(){
+  var L=lang=="tr";
+  var typeOpts=VISA.map(function(v,i){return '<option value="'+i+'">'+v[lang]+' · '+(L?"Yetişkin ":"Adult ")+money(v.p)+' · '+(L?"Çocuk ":"Child ")+money(v.c)+'</option>';}).join('');
+  var rules='<div class="visa-rules"><b style="color:#1D4ED8">'+(L?"Vize kuralları:":"Visa rules:")+'</b><br>'+
+    (L?'• Vize çıktıktan sonra <b>58 gün</b> içinde giriş yapılmalı, yoksa iptal olur.<br>• Süre (30/60 gün) <b>giriş gününde</b> başlar.<br>• İşlem süresi: <b>24–72 saat</b>.<br>• Ücretler <b>iade edilmez</b> (reddedilse dahi).':'• Entry within <b>58 days</b> of issue.<br>• Duration starts <b>on entry day</b>.<br>• Processing: <b>24–72h</b>.<br>• Fees <b>non-refundable</b>.')+'</div>';
+  return '<div class="wrap"><div class="crumb"><a onclick="go(\'\')">'+t('home')+'</a><span class="sep">›</span>'+t('visaTitle')+'</div>'+
+   '<h1 class="p-title">'+t('visaTitle')+'</h1><p style="color:var(--muted);max-width:640px;margin-bottom:22px">'+t('visaSub')+'</p>'+
+   '<div class="p-layout"><div>'+
+     vField(t('fullName')+' <span style="font-weight:500;color:var(--soft)">('+(L?"pasaporttaki gibi":"as in passport")+')</span>','<input class="bb-input" id="vname" placeholder="AHMET YILMAZ" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">')+
+     '<div style="font-size:11px;color:#C2410C;font-weight:600;margin:-6px 0 2px">'+(L?"⚠️ Pasaporttaki yazımla birebir aynı olmalı. Yanlış yazım = vize reddi.":"⚠️ Must match passport exactly. Wrong spelling = rejection.")+'</div>'+
+     vField(t('passportNo')+' <span style="font-weight:500;color:var(--soft)">('+(L?"fotoğraftan otomatik":"auto from photo")+')</span>','<input class="bb-input" id="vpass" placeholder="U12345678" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">')+
+     '<div id="vocr" style="display:none;font-size:12px;font-weight:700;border-radius:8px;padding:9px 12px;margin-bottom:6px"></div>'+
+     vField(t('nationality'),'<input class="bb-input" id="vnat" placeholder="Türkiye">')+
+     vField(t('emailL'),'<input class="bb-input" id="vemail" placeholder="ornek@mail.com">')+
+     vField(t('phoneL'),'<input class="bb-input" id="vphone" placeholder="+90 5xx xxx xx xx">')+
+     '<div class="bb-label" style="margin-top:16px;color:var(--ink);font-size:13px">'+(L?"Belgeler — 4 ayrı yükleme alanı":"Documents — 4 separate upload areas")+'</div>'+
+     vSlotHTML('vf1',(L?"Pasaport (otomatik okunur)":"Passport (auto-read)"),true)+
+     vSlotHTML('vf2',(L?"Fotoğraf (Vesikalık)":"Photo (Personal)"),false)+
+     vSlotHTML('vf3',(L?"Uçak Bileti":"Flight Ticket"),false)+
+     vSlotHTML('vf4',(L?"Otel Rezervasyonu":"Hotel Booking"),false)+
+     '<div style="font-size:11px;color:#C2410C;font-weight:600;margin-top:8px">'+(L?"📸 Net, okunur fotoğraf = daha hızlı işlem.":"📸 Clear photos = faster processing.")+'</div>'+
+   '</div>'+
+   '<div class="book-box"><div class="bb-label">'+t('visaType')+'</div>'+
+     '<select class="bb-select" id="vtype" onchange="visaUpd()">'+typeOpts+'</select>'+
+     '<div class="pax-row"><div><div class="pax-t">'+(L?"Yetişkin":"Adults")+'</div><div class="pax-s">'+(L?"18 yaş ve üzeri":"18 and over")+'</div></div><div class="pax-ctrl"><button class="pax-b" onclick="visaPax(\'a\',-1)">−</button><span class="pax-n" id="va">1</span><button class="pax-b plus" onclick="visaPax(\'a\',1)">+</button></div></div>'+
+     '<div class="pax-row"><div><div class="pax-t">'+(L?"Çocuk":"Children")+'</div><div class="pax-s">'+(L?"18 yaş altı":"under 18")+'</div></div><div class="pax-ctrl"><button class="pax-b" onclick="visaPax(\'c\',-1)">−</button><span class="pax-n" id="vc">0</span><button class="pax-b plus" onclick="visaPax(\'c\',1)">+</button></div></div>'+
+     '<div style="font-size:12px;color:#C2410C;font-weight:600;margin:2px 0 0">'+(L?"18 yaşından küçük herkes çocuk sayılır.":"Everyone under 18 is counted as a child.")+'</div>'+
+     '<div class="bb-note" id="vprices" style="margin:8px 0 0"></div>'+
+     '<div class="bb-total"><span>'+(L?"Toplam":"Total")+'</span><span id="vtot">—</span></div>'+
+     rules+
+     '<label class="vagree"><input type="checkbox" id="vagree"><span>'+(L?"Vize ücretlerinin iade edilmediğini (reddedilse dahi) anladım.":"I understand visa fees are non-refundable, even if rejected.")+'</span></label>'+
+     '<button class="bb-btn" onclick="visaSubmit()">'+t('submitApp')+'</button>'+
+     '<div class="bb-note" style="margin-top:12px">'+t('visaNote')+'</div></div></div></div>';
+}
+function visaPax(w,d){if(w=='a'){window.__va=Math.max(1,(window.__va||1)+d);document.getElementById('va').textContent=window.__va;}else{window.__vc=Math.max(0,(window.__vc||0)+d);document.getElementById('vc').textContent=window.__vc;}visaUpd();}
+function visaUpd(){var s=document.getElementById('vtype');if(!s)return;var v=VISA[+s.value];var na=window.__va||1,nc=window.__vc||0;var e=document.getElementById('vtot');if(e)e.textContent=money(v.p*na+v.c*nc);var vp=document.getElementById('vprices');if(vp)vp.textContent=(lang=="tr"?"Yetişkin: ":"Adult: ")+money(v.p)+" · "+(lang=="tr"?"Çocuk: ":"Child: ")+money(v.c);}
+function vSlot(input,id){var f=input&&input.files&&input.files[0];if(f)document.getElementById(id+'_n').textContent=f.name;}
+function visaSubmit(){
+  var L=lang=="tr";function val(id){var e=document.getElementById(id);return e?e.value.trim():"";}
+  if(!val('vname')){alert(L?"Ad Soyad gerekli.":"Full name required.");return;}
+  if(!val('vpass')){alert(L?"Pasaport No gerekli.":"Passport No required.");return;}
+  var f1=document.getElementById('vf1');if(!(f1&&f1.files&&f1.files.length)){alert(L?"Pasaport fotoğrafını yükle.":"Upload passport photo.");return;}
+  var ag=document.getElementById('vagree');if(ag&&!ag.checked){alert(L?"Lütfen onay kutusunu işaretle.":"Please tick the agreement.");return;}
+  var v=VISA[+document.getElementById('vtype').value];
+  var na=window.__va||1,nc=window.__vc||0,tot=v.p*na+v.c*nc;
+  var msg=(L?"Vize Başvurusu":"Visa Application")+"%0A"+(L?"Tip":"Type")+": "+v[lang]+"%0A"+
+    (L?"Ad Soyad":"Full Name")+": "+val('vname')+"%0A"+(L?"Pasaport No":"Passport")+": "+val('vpass')+"%0A"+
+    (L?"Uyruk":"Nationality")+": "+val('vnat')+"%0A"+(L?"E-posta":"Email")+": "+val('vemail')+"%0A"+(L?"Telefon":"Phone")+": "+val('vphone')+"%0A"+
+    (L?"Kişi":"People")+": "+na+" "+(L?"yetişkin":"adult")+", "+nc+" "+(L?"çocuk":"child")+"%0A"+
+    (L?"Toplam":"Total")+": "+money(tot)+"%0A"+
+    (L?"Belgeleri WhatsApp'tan gönderiyorum.":"I'll send documents via WhatsApp.");
+  window.location.href="https://wa.me/"+WA+"?text="+msg;
+}
+function initVisa(){window.__va=1;window.__vc=0;visaUpd();}
+/* ---- Passport OCR (Tesseract.js — Dubigate'ten birebir) ---- */
+function pLoadTesseract(){
+  if(window.__tessLoad) return window.__tessLoad;
+  window.__tessLoad=new Promise(function(res,rej){
+    if(window.Tesseract){res(window.Tesseract);return;}
+    var s=document.createElement('script');
+    s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+    s.onload=function(){ window.Tesseract?res(window.Tesseract):rej(new Error('engine missing')); };
+    s.onerror=function(){ rej(new Error('engine download failed')); };
+    document.head.appendChild(s);
+  });
+  return window.__tessLoad;
+}
+function pTimeout(p,ms,msg){var t;return Promise.race([Promise.resolve(p).then(function(v){clearTimeout(t);return v;},function(e){clearTimeout(t);throw e;}),new Promise(function(_,rej){t=setTimeout(function(){rej(new Error(msg||'timeout'));},ms);})]);}
+window.__tessProg=null;
+async function pTessWorker(){
+  if(window.__tessW) return window.__tessW;
+  var T=await pTimeout(pLoadTesseract(),40000,'engine download timed out');
+  var w=await pTimeout(T.createWorker('eng',1,{logger:function(m){ if(window.__tessProg) try{window.__tessProg(m);}catch(e){} }}),90000,'engine start timed out');
+  try{ await w.setParameters({tessedit_char_whitelist:'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<',tessedit_pageseg_mode:'6'}); }catch(e){}
+  window.__tessW=w;return w;
+}
+function pLoadImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file);var i=new Image();i.onload=function(){res(i);setTimeout(function(){URL.revokeObjectURL(u);},1000);};i.onerror=function(){URL.revokeObjectURL(u);rej(new Error('image load failed'));};i.src=u;});}
+function pPrep(img,bandTop,bandBottom,targetW){
+  var sy=Math.round(img.height*bandTop);var sh=Math.max(1,Math.round(img.height*(bandBottom-bandTop)));var sc=Math.min(1.8,targetW/img.width);
+  var c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.width*sc));c.height=Math.max(1,Math.round(sh*sc));var ctx=c.getContext('2d');
+  ctx.drawImage(img,0,sy,img.width,sh,0,0,c.width,c.height);
+  try{var im=ctx.getImageData(0,0,c.width,c.height),d=im.data,i,g;for(i=0;i<d.length;i+=4){g=0.299*d[i]+0.587*d[i+1]+0.114*d[i+2];d[i]=d[i+1]=d[i+2]=g;}ctx.putImageData(im,0,0);}catch(e){}
+  return c.toDataURL('image/jpeg',0.92);
+}
+async function pOcrText(dataUrl,onProg){var w=await pTessWorker();window.__tessProg=onProg||null;try{var r=await pTimeout(w.recognize(dataUrl),60000,'reading timed out');return (r&&r.data&&r.data.text)||'';}finally{window.__tessProg=null;}}
+async function pOcrPassport(file,onProg){
+  var img;try{img=await pLoadImg(file);}catch(e){return null;}
+  var tries=[[0.68,1.0,1600],[0.50,1.0,1500],[0.0,1.0,1400]];
+  try{for(var k=0;k<tries.length;k++){var url;try{url=pPrep(img,tries[k][0],tries[k][1],tries[k][2]);}catch(e){continue;}var txt='';try{txt=await pOcrText(url,onProg);}catch(e){return {err:(e&&e.message)||'error'};}var p=pParseMRZ(txt);if(p&&p.ok&&(p.passport||(p.surname&&p.surname.length>1)))return p;}return null;}finally{pTessFree();}
+}
+function pTessFree(){try{if(window.__tessW){var w=window.__tessW;window.__tessW=null;Promise.resolve(w.terminate()).catch(function(){});}}catch(e){}}
+function pParseMRZ(text){
+  var raw=(text||'').toUpperCase().split('\n').map(function(l){return l.replace(/[^A-Z0-9<]/g,'');}).filter(function(l){return l.length>=20;});
+  var pad=function(s){return (s+'<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<').slice(0,44);};
+  var l1=-1,i;for(i=0;i<raw.length;i++){if(/^P[A-Z<]/.test(raw[i])&&raw[i].indexOf('<')>0){l1=i;break;}}
+  if(l1<0)return null;
+  var line1=pad(raw[l1]);var line2='';for(i=l1+1;i<raw.length;i++){if(/[0-9]/.test(raw[i])){line2=pad(raw[i]);break;}}
+  var nameField=line1.slice(5);var parts=nameField.split('<<');var surname=(parts[0]||'').replace(/</g,' ').trim();var given=(parts[1]||'').replace(/</g,' ').trim();
+  var passport='';if(line2){passport=line2.slice(0,9).replace(/</g,'').trim();}
+  var fullName=(given+' '+surname).replace(/\s+/g,' ').trim();
+  return {fullName:fullName,surname:surname,given:given,passport:passport,ok:(surname.length>1||given.length>1)};
+}
+async function vPassport(input){
+  var f=input&&input.files&&input.files[0];if(!f)return;
+  var nm=document.getElementById('vf1_n');if(nm)nm.textContent=f.name;
+  var st=document.getElementById('vocr');var L=lang=="tr";
+  function setSt(h,c,bg,bd){st.style.display='block';st.style.color=c;st.style.background=bg;st.style.border='1.5px solid '+bd;st.innerHTML=h;}
+  if(!/^image\//.test(f.type||'')){return;}
+  setSt((L?'🔍 Pasaport okunuyor… <b>0%</b><br><span style="font-weight:600">İlk seferde okuyucu inerken ~30sn sürebilir, ekranı kapatma.</span>':'🔍 Reading passport… <b>0%</b>'),'#1D4ED8','#F0F6FF','#C7DCF7');
+  var prog=function(m){var pct=(m&&typeof m.progress==='number')?Math.round(m.progress*100):null;var stg=(m&&m.status)||'';if(/load|download|initial|initializ/i.test(stg))setSt((L?'⬇️ Okuyucu iniyor… ':'⬇️ Downloading reader… ')+'<b>'+(pct!=null?pct+'%':'')+'</b>','#1D4ED8','#F0F6FF','#C7DCF7');else if(pct!=null)setSt((L?'🔍 Pasaport okunuyor… ':'🔍 Reading passport… ')+'<b>'+pct+'%</b>','#1D4ED8','#F0F6FF','#C7DCF7');};
+  var r=null;try{r=await pOcrPassport(f,prog);}catch(e){r={err:(e&&e.message)||'error'};}
+  var nmi=document.getElementById('vname'),pp=document.getElementById('vpass');
+  if(r&&r.ok){
+    if(nmi&&r.fullName)nmi.value=r.fullName.toUpperCase();
+    if(pp&&r.passport)pp.value=r.passport.toUpperCase();
+    setSt((L?'✅ Pasaporttan otomatik dolduruldu. Göndermeden önce kontrol et.':'✅ Auto-filled from passport. Please double-check before submitting.'),'#1B7A45','#EAF8F0','#BFE8D0');
+  }else if(r&&r.err){
+    setSt((L?'⏱️ Okunamadı ('+r.err+'). Sorun değil — bilgileri elle yaz.':'⏱️ Could not read ('+r.err+'). Just type the details.'),'#9A6B15','#FFF7E8','#F2DFB6');
+  }else{
+    setSt((L?'⚠️ Otomatik okunamadı — bilgileri elle yaz. İpucu: pasaportun alttaki iki satır kodu net görünsün.':'⚠️ Could not read automatically — please type. Tip: keep the two code lines sharp.'),'#9A6B15','#FFF7E8','#F2DFB6');
+  }
+}
+
+var scrollTarget=null;
+/* ===== SEPET (CART) ===== */
+var CART=(function(){try{return JSON.parse(sessionStorage.getItem('esila_cart')||'[]');}catch(e){return[];}})();
+function cartSave(){try{sessionStorage.setItem('esila_cart',JSON.stringify(CART));}catch(e){}cartBadge();}
+function cartBadge(){var el=document.getElementById('cartCount');if(!el)return;el.textContent=CART.length;el.style.display=CART.length>0?'flex':'none';}
+function itCalc(it){var p=bySlug(it.slug);if(!p)return null;var pv=isPV(p);var u=(it.pkg!=null&&it.pkg>=0&&p.pkgs&&p.pkgs[it.pkg])?p.pkgs[it.pkg].p:(p.now!=null?p.now:(p.pkgs&&p.pkgs[0]?p.pkgs[0].p:0));var cu=(p.child!=null?p.child:u);var a=it.adults||1,c=it.children||0;return{p:p,u:u,cu:cu,tot:pv?u:(u*a+cu*c),pay:(p.type=="tour"?"deposit":"full"),pv:pv};}
+function addToCart(){var p=window.__cur;if(!p)return;var s=document.getElementById('pkg');var pkg=s?+s.value:-1;var d=document.getElementById('bdate');var date=(d&&d.value)?d.value:"";var a=window.__na||1,c=window.__nc||0;if(!date){alert(lang=="tr"?"Lütfen bir tarih seçin.":"Please select a date.");return;}CART.push({slug:p.slug,pkg:pkg,date:date,adults:a,children:c});cartSave();var b=document.getElementById('addBtn');if(b){var o=b.textContent;b.textContent=(lang=="tr"?"Sepete eklendi ✓":"Added ✓");b.disabled=true;setTimeout(function(){b.textContent=o;b.disabled=false;},1400);}}
+function openCart(){renderCart();document.getElementById('cartOv').classList.add('open');}
+function closeCart(){document.getElementById('cartOv').classList.remove('open');}
+function removeItem(i){CART.splice(i,1);cartSave();renderCart();}
+function cartPax(i,kind,delta){var it=CART[i];if(!it)return;if(kind=="a"){it.adults=Math.max(1,(it.adults||1)+delta);}else{it.children=Math.max(0,(it.children||0)+delta);}cartSave();renderCart();}
+function paxCtl(lbl,i,kind,val){return '<span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--muted)">'+lbl+'<button onclick="cartPax('+i+',\''+kind+'\',-1)" style="width:24px;height:24px;border:1.5px solid var(--line);background:#fff;border-radius:7px;font-weight:800;cursor:pointer;font-family:inherit">−</button><b style="min-width:14px;text-align:center;color:var(--ink)">'+val+'</b><button onclick="cartPax('+i+',\''+kind+'\',1)" style="width:24px;height:24px;border:1.5px solid var(--line);background:#fff;border-radius:7px;font-weight:800;cursor:pointer;font-family:inherit">+</button></span>';}
+function renderCart(){var L=lang=="tr";var tt=document.getElementById('cartTitle');if(tt)tt.textContent=L?"Sepet":"Cart";var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot');if(!body)return;
+  if(!CART.length){body.innerHTML='<div style="text-align:center;color:var(--muted);padding:44px 10px">'+(L?"Sepetiniz boş.":"Your cart is empty.")+'</div>';foot.innerHTML='';return;}
+  body.innerHTML=CART.map(function(it,i){var c=itCalc(it);if(!c)return '';var p=c.p;var pk=(it.pkg!=null&&it.pkg>=0&&p.pkgs&&p.pkgs[it.pkg])?(' · '+p.pkgs[it.pkg][lang]):'';
+    var paxHtml=c.pv?'':'<div style="display:flex;gap:14px;margin-top:8px;flex-wrap:wrap">'+paxCtl(L?"Yetişkin":"Adult",i,'a',it.adults||1)+paxCtl(L?"Çocuk":"Child",i,'c',it.children||0)+'</div>';
+    return '<div class="cart-item"><div style="flex:1;min-width:0">'+
+      '<div class="cart-nm">'+p.name[lang]+pk+'</div>'+
+      '<div class="cart-sub">'+it.date+' · '+(c.pay=="deposit"?(L?"%50 kapora":"50% deposit"):(L?"tam ödeme":"full payment"))+'</div>'+
+      paxHtml+
+      '</div><div style="text-align:right"><div class="cart-amt">'+money(c.tot)+'</div><button class="cart-rm" onclick="removeItem('+i+')">'+(L?"Kaldır":"Remove")+'</button></div></div>';
+  }).join('');
+  var grand=0,now=0;CART.forEach(function(it){var c=itCalc(it);if(!c)return;grand+=c.tot;now+=(c.pay=="deposit"?c.tot*0.5:c.tot);});
+  foot.innerHTML='<div class="cart-row"><span>'+(L?"Toplam":"Total")+' ('+CART.length+')</span><b>'+money(grand)+'</b></div>'+
+    '<div class="cart-row" style="color:var(--muted)"><span>'+(L?"Şimdi ödenecek":"Pay now")+'</span><span>'+money(now)+'</span></div>'+
+    '<button class="cart-co" onclick="checkout()">'+(L?"Siparişi Tamamla":"Checkout")+' → '+money(now)+'</button>'+
+    '<button class="cart-keep" onclick="closeCart()">'+(L?"Alışverişe devam et":"Keep shopping")+'</button>';
+}
+function checkout(){if(!CART.length)return;var L=lang=="tr";var lines=[],grand=0,now=0;
+  CART.forEach(function(it){var c=itCalc(it);if(!c)return;var p=c.p;var pk=(it.pkg!=null&&it.pkg>=0&&p.pkgs&&p.pkgs[it.pkg])?(' - '+p.pkgs[it.pkg][lang]):'';grand+=c.tot;now+=(c.pay=="deposit"?c.tot*0.5:c.tot);
+    var who=c.pv?'':(' | '+(it.adults||1)+(L?" yetişkin":" adult")+', '+(it.children||0)+(L?" çocuk":" child"));
+    lines.push('• '+p.name[lang]+pk+' | '+it.date+who+' | '+money(c.tot)+(c.pay=="deposit"?(L?" (%50 kapora)":" (50% deposit)"):""));});
+  var msg=(L?"Merhaba, aşağıdaki siparişi vermek istiyorum:":"Hello, I would like to place the following order:")+"\n\n"+lines.join("\n")+"\n\n"+(L?"Toplam":"Total")+": "+money(grand)+"\n"+(L?"Şimdi ödenecek":"Pay now")+": "+money(now);
+  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
+}
+function toggleMenu(){var n=document.getElementById('navLinks');if(n)n.classList.toggle('open');}
+function go(route,anchor){var n=document.getElementById('navLinks');if(n)n.classList.remove('open');location.hash=route?('#/'+route):'#/'; scrollTarget=anchor||null; if(route===''&&!anchor)window.scrollTo(0,0);}
+function render(){
+  var h=location.hash.replace(/^#\//,'');
+  var app=document.getElementById('app');
+  if(h.indexOf('p/')===0){app.innerHTML=viewDetail(h.slice(2));initDetail();}
+  else if(h=='turlar'){app.innerHTML=viewList(); if(window.__pre){var qi=document.getElementById('q'),ci=document.getElementById('qcity'); if(qi)qi.value=window.__pre.q||''; if(ci)ci.value=window.__pre.city||''; applyFilter(); window.__pre=null;}}
+  else if(h=='vize'){app.innerHTML=viewVisa(); initVisa(); window.scrollTo(0,0);}
+  else if(h=='hakkimizda'){app.innerHTML=viewAbout(); window.scrollTo(0,0);}
+  else if(h=='sartlar'){app.innerHTML=viewTerms(); window.scrollTo(0,0);}
+  else if(h=='gizlilik'){app.innerHTML=viewPrivacy(); window.scrollTo(0,0);}
+  else {app.innerHTML=viewHome();}
+  renderChrome();
+  document.documentElement.lang=lang;
+  if(scrollTarget){var el=document.getElementById(scrollTarget); if(el)el.scrollIntoView({behavior:'smooth'}); scrollTarget=null;}
+  else if(h.indexOf('p/')===0)window.scrollTo(0,0);
+}
+function setLang(v){lang=v; render();}
+function setCur(v){cur=v; render();}
+window.addEventListener('hashchange',render);
+/* ---- Supabase'ten ürünleri çek (admin değişiklikleri buradan yansır) ---- */
+var SB_URL="https://vhartnvfollcdvgwcemn.supabase.co";
+var SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZoYXJ0bnZmb2xsY2R2Z3djZW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDk1NTYsImV4cCI6MjA5NTgyNTU1Nn0.zCizCRyrbIN0bIz8QXOOHprtj7BAFwPsc9qOkymDCLE";
+function mapRow(r){return {slug:r.slug,type:r.ptype,city:r.city,grad:r.grad,photo:r.photo_url||null,child:(r.child_price!=null?r.child_price:null),age:r.age_info||null,
+  badge:r.badge_cls?[r.badge_cls,r.badge_tr,r.badge_en]:null,
+  name:{tr:r.name_tr,en:r.name_en||r.name_tr},
+  dur:r.dur_tr?{tr:r.dur_tr,en:r.dur_en||r.dur_tr}:null,
+  orig:r.orig,now:r.price_now,disc:r.disc,
+  pkgs:r.packages||[],blurb:r.blurb||{tr:[],en:[]},inc:r.inc||{tr:[],en:[]}};}
+function loadFX(){
+  try{
+    fetch("https://open.er-api.com/v6/latest/AED")
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(j){ if(j&&j.rates){ if(j.rates.TRY)RATE.TRY=j.rates.TRY; if(j.rates.USD)RATE.USD=j.rates.USD; render(); } })
+      .catch(function(){});
+  }catch(e){}
+}
+function bootstrap(){
+  loadFX();
+  try{
+    fetch(SB_URL+"/rest/v1/esila_products?select=*&active=eq.true&order=sort",{headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY}})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(rows){ if(rows&&rows.length){ DATA=rows.map(mapRow); } render(); })
+      .catch(function(){ render(); });
+  }catch(e){ render(); }
+}
+bootstrap();
+</script>
+</body>
+</html>
