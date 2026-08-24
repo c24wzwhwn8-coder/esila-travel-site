@@ -75,7 +75,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit;cursor:poi
 .hp:hover{background:rgba(255,255,255,.14)}
 .hp-av{width:36px;height:36px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0}
 .hp-t{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
-.hp-t b{color:#fff;font-size:14px;font-weight:700}.hp-t small{color:rgba(255,255,255,.6);font-size:12px}
+.hp-t b{color:#fff;font-size:14px;font-weight:700}.hp-t small{color:rgba(255,255,255,.6);font-size:12px}.hp-num{white-space:nowrap;letter-spacing:.2px}
 .hp-wa{display:inline-flex;align-items:center;gap:5px;background:var(--green);color:#fff;font-weight:700;font-size:12.5px;padding:8px 11px;border-radius:9px;flex-shrink:0}
 @media(max-width:640px){.hero2 .wrap{padding-top:40px;padding-bottom:36px}.hsearch input,.hsearch select,.hsearch button{flex:1 1 100%}.hero-cta{font-size:16px;padding:16px}.hero-team{flex-direction:column;gap:10px;align-items:stretch}.hp{flex:0 0 auto}}
 .sec{padding:66px 0 6px}.sec-h{font-size:clamp(23px,3.2vw,32px);font-weight:800;margin-bottom:5px}
@@ -266,9 +266,10 @@ function card(p){
 }
 
 function heroPerson(name,num,wa){var L=lang=="tr";
+  var role=L?"Satış Temsilcisi":"Sales Representative";
   return '<a class="hp" href="https://wa.me/'+wa+'?text='+encodeURIComponent(L?"Merhaba, bilgi almak istiyorum.":"Hello, I would like some information.")+'" target="_blank" rel="noopener">'+
     '<span class="hp-av">'+name.charAt(0)+'</span>'+
-    '<span class="hp-t"><b>'+name+'</b><small>'+num+'</small></span>'+
+    '<span class="hp-t"><b>'+name+'</b><small>'+role+'</small><small class="hp-num">'+num+'</small></span>'+
     '<span class="hp-wa"><svg viewBox="0 0 32 32" width="17" height="17" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3z"/></svg>'+(L?"Yaz":"Chat")+'</span></a>';}
 function viewHome(){
   var tours=DATA.filter(function(p){return p.type=="tour";});
@@ -280,8 +281,8 @@ function viewHome(){
     '<div class="hero-or">'+(lang=="tr"?"veya ne istediğini söyle, sana özel fiyat çıkaralım":"or tell us what you need and get a custom price")+'</div>'+
     '<a class="hero-cta" href="#/teklif">'+(lang=="tr"?"Ücretsiz Teklif Al":"Get a Free Quote")+'</a>'+
     '<div class="hero-team">'+
-      heroPerson('Esra Topcu','+971 55 909 7043',WA)+
-      heroPerson('Erhan Topcu','+971 58 241 77 61',WA_SALES)+
+      heroPerson(lang=="tr"?"Esra Hanım":"Esra Topcu",'+971 55 909 7043',WA)+
+      heroPerson(lang=="tr"?"Erhan Bey":"Erhan Topcu",'+971 58 241 77 61',WA_SALES)+
     '</div>'+
     '</div></div>'+
     '<div class="wrap sec"><h2 class="sec-h">'+t('popAct')+'</h2><div class="sec-sub">'+t('popActS')+'</div><div class="cards">'+tours.map(card).join('')+'</div>'+
@@ -533,8 +534,8 @@ function viewContact(){
     '<a href="https://wa.me/'+wa+'?text='+encodeURIComponent(L?"Merhaba, bilgi almak istiyorum.":"Hello, I would like some information.")+'" target="_blank" rel="noopener" style="background:var(--green);color:#fff;font-weight:700;font-size:13px;padding:11px 15px;border-radius:10px;white-space:nowrap;flex-shrink:0">'+(L?"Yaz":"Chat")+'</a></div>';}
   var team='<div style="font-weight:800;font-size:19px;color:var(--ink);margin:26px 0 12px">'+(L?"Satış Ekibimiz":"Our Sales Team")+'</div>'+
     '<p style="color:var(--muted);font-size:14px;margin:0 0 14px">'+(L?"Tıkla, doğrudan WhatsApp'tan konuş.":"Tap to chat directly on WhatsApp.")+'</p>'+
-    person('Esra Topcu',(L?"Satış Temsilcisi":"Sales Representative"),'+971 55 909 7043',WA)+
-    person('Erhan Topcu',(L?"Satış Temsilcisi":"Sales Representative"),'+971 58 241 77 61',WA_SALES);
+    person(L?"Esra Hanım":"Esra Topcu",(L?"Satış Temsilcisi":"Sales Representative"),'+971 55 909 7043',WA)+
+    person(L?"Erhan Bey":"Erhan Topcu",(L?"Satış Temsilcisi":"Sales Representative"),'+971 58 241 77 61',WA_SALES);
   var social='<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">'+
     '<a href="https://instagram.com/esilatraveldubai" target="_blank" rel="noopener" style="flex:1;min-width:120px;text-align:center;border:1px solid var(--line);border-radius:11px;padding:12px;font-weight:700;color:var(--ink)">Instagram</a>'+
     '<a href="https://tiktok.com/@esilatraveldubai" target="_blank" rel="noopener" style="flex:1;min-width:120px;text-align:center;border:1px solid var(--line);border-radius:11px;padding:12px;font-weight:700;color:var(--ink)">TikTok</a>'+
