@@ -199,8 +199,8 @@ var DATA = [{"slug": "dubai-sehir-turu", "type": "tour", "city": "Dubai", "grad"
 var VISA=[{tr:"30 Gün · Tek Giriş",en:"30 Days · Single Entry",u:99,cu:55,p:364,c:202},{tr:"30 Gün · Çok Giriş",en:"30 Days · Multiple Entry",u:190,cu:55,p:698,c:202},{tr:"60 Gün · Tek Giriş",en:"60 Days · Single Entry",u:185,cu:70,p:680,c:258},{tr:"60 Gün · Çok Giriş",en:"60 Days · Multiple Entry",u:240,cu:70,p:882,c:258}];
 function vUSD(x){return x+" USD";}
 var WA="971555894604";
-var WA_SALES="971582417761";
-function teklifLink(){return "https://wa.me/"+WA_SALES+"?text="+encodeURIComponent(lang=="tr"?"Merhaba, Dubai/Abu Dhabi için teklif almak istiyorum.":"Hello, I'd like to get a quote for Dubai/Abu Dhabi.");}
+var WA_SALES="971582417761"; var WA_TEKLIF="971553093355";
+function teklifLink(){return "https://wa.me/"+WA_TEKLIF+"?text="+encodeURIComponent(lang=="tr"?"Merhaba, Dubai/Abu Dhabi için teklif almak istiyorum.":"Hello, I'd like to get a quote for Dubai/Abu Dhabi.");}
 var lang="tr", cur="AED";
 var RATE={AED:1,USD:0.2723,TRY:12.9}, SYM={AED:"AED",USD:"$",TRY:"₺"};
 var I={
@@ -427,6 +427,7 @@ function renderChrome(){
    '<p><b>'+(lang=="tr"?"Ofis":"Office")+':</b> FDRK5374, Compass Building, Al Shohada Road, Al Hamra Industrial Zone-FZ, Ras Al Khaimah, '+(lang=="tr"?"BAE":"UAE")+'</p>'+
    '<p><b>WhatsApp:</b> <a href="https://wa.me/'+WA+'">+971 55 589 4604</a></p>'+
    '<p><b>'+(lang=="tr"?"Satış (Erhan)":"Sales (Erhan)")+':</b> <a href="https://wa.me/'+WA_SALES+'">+971 58 241 77 61</a></p>'+
+   '<p><b>'+(lang=="tr"?"Satış (Ayşen)":"Sales (Ayşen)")+':</b> <a href="https://wa.me/971553093355">+971 55 309 3355</a></p>'+
    '<p><b>'+(lang=="tr"?"E-posta":"Email")+':</b> <a href="mailto:info@esilatraveldubai.com">info@esilatraveldubai.com</a></p></div>'+
    '<div><div class="foot-h">'+t('footCorp')+'</div><ul class="foot-links">'+
    '<li><a onclick="go(\'\')">'+t('home')+'</a></li><li><a onclick="go(\'turlar\')">'+t('tours')+'</a></li>'+
@@ -540,7 +541,7 @@ function qSummary(){var L=lang=="tr",Q=window.QF;var lines=[];
 function qSubmit(){qSave(5);var L=lang=="tr",Q=window.QF;
   var msg=(L?"Merhaba, teklif almak istiyorum:":"Hello, I'd like a quote:")+"\n\n"+qSummary();
   if(Q.name)msg+="\n"+(L?"Ad: ":"Name: ")+Q.name;
-  window.open("https://wa.me/"+WA_SALES+"?text="+encodeURIComponent(msg),"_blank");
+  window.open("https://wa.me/"+WA_TEKLIF+"?text="+encodeURIComponent(msg),"_blank");
 }
 function viewContact(){
   var L=lang=="tr";
@@ -561,6 +562,7 @@ function viewContact(){
     '<p style="color:var(--muted);font-size:14px;margin:0 0 14px">'+(L?"Tıkla, doğrudan WhatsApp'tan konuş.":"Tap to chat directly on WhatsApp.")+'</p>'+
     person(L?"Esra Hanım":"Esra Topcu",(L?"Satış Temsilcisi":"Sales Representative"),'+971 55 589 4604',WA)+
     person(L?"Erhan Bey":"Erhan Topcu",(L?"Satış Temsilcisi":"Sales Representative"),'+971 58 241 77 61',WA_SALES)+
+    person(L?"Ayşen Hanım":"Ayşen",(L?"Satış Temsilcisi":"Sales Representative"),'+971 55 309 3355','971553093355')+
     '<div style="display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;margin-bottom:10px">'+
     '<div style="width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0">Y</div>'+
     '<div style="flex:1;min-width:0"><div style="font-weight:800;color:var(--ink);font-size:15px">'+(L?"Yasemin Hanım":"Yasemin")+'</div><div style="color:var(--muted);font-size:13px">'+(L?"Satış Temsilcisi":"Sales Representative")+'</div><div style="color:var(--muted);font-size:13px">Instagram DM · @esilatraveldubai</div></div>'+
